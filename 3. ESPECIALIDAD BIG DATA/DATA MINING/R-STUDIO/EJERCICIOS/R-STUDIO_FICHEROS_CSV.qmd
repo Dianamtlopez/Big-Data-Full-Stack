@@ -1,0 +1,115 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T2V7 - importar datos csv a R
+
+Objetivo: aprender a importar archivos csv a R
+
+En este ejercicio vamos a aprender:
+
+1.  Que necesitas antes de empezar
+2.  Cómo importar datos utilizando código de R
+3.  Cómo importar datos con la interfaz de RStudio
+
+# 1. Que necesitas antes de empezar
+
+instalar paquete readr
+
+```{r}
+# install.packages("readr")
+```
+
+cargar paquete readr
+
+```{r}
+library(readr)
+```
+
+buscar la ruta del archivo de csv
+
+```{r}
+# Comando para buscar la ruta del CSV
+file.choose()
+```
+
+Copiar ruta de la consola y guardar en variable
+
+```{r}
+# Pegamos la ruta obtenida con el comando file.choose()
+ruta_csv <- "D:\\Users\\diana\\Downloads\\DATA MINING\\data-mining-main1\\R-STUDIO\\PRACTICA\\gapminder.csv"
+```
+
+# 2. importar csv con código de R
+
+importar datos gapminder
+
+```{r}
+# csv con titulos
+gapminder <- read_csv (ruta_csv)
+```
+
+mirar datos
+
+```{r}
+head(gapminder)
+```
+
+caso no titulo
+
+```{r}
+ruta_sintitulo <- "D:\\Users\\diana\\Downloads\\DATA MINING\\data-mining-main1\\R-STUDIO\\PRACTICA\\gapminder_col_names.csv"
+gapminder_sintitulo <- read_csv(ruta_sintitulo,
+                                col_names = FALSE)
+```
+
+para agregar nombre
+
+```{r}
+# debemos agregar un vector de texto a la opcion colnames, debe tener tantos nombres como columnas del df
+# de esta manera podemos cambiar el nombre de las columnas de cualquier archivo
+gapminder_contitulo <- read_csv(ruta_sintitulo,
+                                col_names = c('pais',
+                                              'anio',
+                                              'vida',
+                                              'poblacion'))
+
+```
+
+caso punto y coma
+
+```{r}
+ruta_puntoycoma <- "D:\\Users\\diana\\Downloads\\DATA MINING\\data-mining-main1\\R-STUDIO\\PRACTICA\\gapminder_puntoycoma.csv"
+gapminder_puntoycoma <- read_csv2(ruta_puntoycoma)
+```
+
+# 3. importar csv con interfaz RStudio
+
+ir a File \> Import Dataset \> From Text (readr)
+
+```{r}
+# Seleccionamos el archivo csv pra importar, podemos ajustar cosas como el nombre de las variables en R, si la primera columna tiene nombre, el tipo de separador, y otras opciones más avanzadas
+```
+
+código que genera y ejecuta R automáticamente
+
+```{r}
+View(gapminder)
+library(readr)
+gapminder <- read_csv("D:/Users/diana/Downloads/DATA MINING/data-mining-main1/R-STUDIO/PRACTICA/gapminder.csv")
+```

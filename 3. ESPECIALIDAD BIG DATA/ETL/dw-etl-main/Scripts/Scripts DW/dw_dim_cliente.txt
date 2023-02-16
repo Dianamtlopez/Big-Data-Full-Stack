@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS public.dim_cliente
+(
+    sk_cliente integer NOT NULL,
+    id_cliente integer NOT NULL,
+    id_almacen integer,
+    nom_cliente character(90) COLLATE pg_catalog."default",
+    des_email character(50) COLLATE pg_catalog."default",
+    txt_dir_cliente character(50) COLLATE pg_catalog."default",
+    txt_dir_almacen character(50) COLLATE pg_catalog."default",
+    des_ciudad character(50) COLLATE pg_catalog."default",
+    des_pais character(50) COLLATE pg_catalog."default",
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default",
+    CONSTRAINT dim_cliente_pkey PRIMARY KEY (sk_cliente)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.dim_cliente
+    OWNER to postgres;
+-- Index: idx_dim_cliente
+
+-- DROP INDEX public.idx_dim_cliente;
+
+CREATE INDEX idx_dim_cliente
+    ON public.dim_cliente USING btree
+    (id_cliente ASC NULLS LAST)
+    TABLESPACE pg_default;

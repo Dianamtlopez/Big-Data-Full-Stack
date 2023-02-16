@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>introduccion_bi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="1-Introduccion_BI_files/libs/clipboard/clipboard.min.js"></script>
+<script src="1-Introduccion_BI_files/libs/quarto-html/quarto.js"></script>
+<script src="1-Introduccion_BI_files/libs/quarto-html/popper.min.js"></script>
+<script src="1-Introduccion_BI_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="1-Introduccion_BI_files/libs/quarto-html/anchor.min.js"></script>
+<link href="1-Introduccion_BI_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="1-Introduccion_BI_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="1-Introduccion_BI_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="1-Introduccion_BI_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="1-Introduccion_BI_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="introducción-a-r-data-mining-business-intelligence" class="level1">
+<h1>Introducción a R, Data Mining &amp; Business Intelligence</h1>
+<section id="bienvenidos" class="level3">
+<h3 class="anchored" data-anchor-id="bienvenidos">Bienvenidos</h3>
+<p>Esto es un notebook. Podemos escribir en lenguaje Markdown, el cual nos permite: * Listas * Escribir en <strong>negrita</strong> y <em>cursiva</em> * Más información aquí: <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown-Cheatsheet</a></p>
+</section>
+<section id="preguntad" class="level3">
+<h3 class="anchored" data-anchor-id="preguntad">PREGUNTAD!!</h3>
+<p>Sobretodo si os perdeis, no lleguemos a casos donde no sepais que estamos haciendo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.kym-cdn.com/entries/icons/original/000/008/342/ihave.jpg%20@" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Imagen no cargada. Edita y borra la @</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="business-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="business-intelligence">Business Intelligence</h2>
+<p>El término Business Intelligence (BI) aprovecha el software y los servicios para transformar los datos en información procesable que informe las decisiones comerciales estratégicas y tácticas de una organización. Las herramientas de BI acceden y analizan conjuntos de datos y presentan hallazgos analíticos en informes, resúmenes, tableros, gráficos, tablas y mapas para proporcionar a los usuarios inteligencia detallada sobre el estado del negocio.</p>
+<p>El término Business Intelligence a menudo también se refiere a una variedad de herramientas que brindan acceso rápido y fácil de digerir a información sobre el estado actual de una organización, según los datos disponibles.</p>
+<section id="herramientas-bi" class="level3">
+<h3 class="anchored" data-anchor-id="herramientas-bi">Herramientas BI</h3>
+<section id="de-pago" class="level4">
+<h4 class="anchored" data-anchor-id="de-pago">De pago:</h4>
+<ul>
+<li>PowerBI: https://powerbi.microsoft.com/en-au/</li>
+<li>Tableau: https://www.tableau.com/</li>
+<li>Qlickview: https://www.qlik.com/</li>
+</ul>
+</section>
+</section>
+<section id="gratuitas" class="level3">
+<h3 class="anchored" data-anchor-id="gratuitas">Gratuitas:</h3>
+<ul>
+<li>Metabase: https://www.metabase.com/</li>
+<li>Apache Superset: https://superset.apache.org/</li>
+</ul>
+</section>
+<section id="lenguaje-estadístico-r" class="level3">
+<h3 class="anchored" data-anchor-id="lenguaje-estadístico-r">Lenguaje estadístico R</h3>
+<p>R es un entorno y lenguaje de programación con un enfoque al análisis estadístico.</p>
+<p>Es gratuito, se distribuye bajo licencia GPL y está disponible aquí: https://www.r-project.org/</p>
+</section>
+</section>
+</section>
+<section id="bibliografía" class="level1">
+<h1>Bibliografía</h1>
+<p>Sobre <strong>R</strong>: <a href="https://www.amazon.com/Data-Science-Transform-Visualize-Model/dp/1491910399/ref=sr_1_1?ie=UTF8&amp;qid=1518791084">R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</a> Este libro es bastante completo, abarca mucho temario que no veremos por falta de tiempo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(c("tidyverse", "rmarkdown", "nasapower", "zoo", "caret"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="que-podemos-hacer-con-r" class="level1">
+<h1>¿Que podemos hacer con R?</h1>
+<section id="trabajar-con-tablas" class="level3">
+<h3 class="anchored" data-anchor-id="trabajar-con-tablas">Trabajar con tablas</h3>
+<p>Podemos guardar el contenido de una hoja de calculo Excel o un fichero CSV en un objeto llamado dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>activities<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/activities_strava.csv'</span>, <span class="at">stringsAsFactor=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos ver las primeras filas de su contenido:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Activity.ID            Activity.Date  Activity.Name Activity.Type
+1  2583296920  Aug 1, 2019, 3:51:15 PM Afternoon Ride          Ride
+2  2583296929  Aug 2, 2019, 5:53:50 AM   Morning Ride          Ride
+3  2584111125  Aug 2, 2019, 1:15:49 PM Afternoon Ride          Ride
+4  2613027582 Aug 12, 2019, 3:58:59 PM Afternoon Ride          Ride
+5  2631611632 Aug 19, 2019, 5:24:35 AM   Morning Ride          Ride
+6  2632473031 Aug 19, 2019, 1:29:48 PM Afternoon Ride          Ride
+  Activity.Description Elapsed.Time Distance Relative.Effort Commute
+1                   NA        50436     8.14              NA   false
+2                   NA         1745     7.96              NA   false
+3                   NA          944     6.97              NA   false
+4                   NA         4170    10.52              NA   false
+5                   NA         1744     7.62              NA    true
+6                   NA         1046     7.62              NA    true
+  Activity.Gear                  Filename Athlete.Weight Bike.Weight
+1            NA activities/2583296920.gpx              0          NA
+2            NA activities/2583296929.gpx              0          NA
+3            NA activities/2584111125.gpx              0          NA
+4            NA activities/2613027582.gpx              0          NA
+5            NA activities/2631611632.gpx              0          NA
+6            NA activities/2632473031.gpx              0          NA
+  Elapsed.Time.1 Moving.Time Distance.1 Max.Speed Average.Speed Elevation.Gain
+1          50436       38641     8143.7      14.2            NA       29.82933
+2           1745        1682     7960.3      13.8            NA      128.79434
+3            944         944     6969.6      14.9            NA       17.21061
+4           4170        3003    10528.8      11.8            NA       62.29892
+5           1744        1611     7628.7      12.0            NA      128.79936
+6           1046        1038     7620.3      13.9            NA       30.42585
+  Elevation.Loss Elevation.Low Elevation.High Max.Grade Average.Grade
+1             NA         605.7          704.5      21.7   -1.03392804
+2             NA         584.3          704.5      13.0    1.18462873
+3             NA         584.3          704.5      10.5   -1.59837008
+4             NA         765.5          794.6       7.2   -0.02944305
+5             NA         584.3          704.5      12.9    1.33181274
+6             NA         584.3          704.5      10.1   -1.30965972
+  Average.Positive.Grade Average.Negative.Grade Max.Cadence Average.Cadence
+1                     NA                     NA          NA              NA
+2                     NA                     NA          NA              NA
+3                     NA                     NA          NA              NA
+4                     NA                     NA          NA              NA
+5                     NA                     NA          NA              NA
+6                     NA                     NA          NA              NA
+  Max.Heart.Rate Average.Heart.Rate Max.Watts Average.Watts Calories
+1             NA                 NA        NA            NA       NA
+2             NA                 NA        NA            NA       NA
+3             NA                 NA        NA            NA       NA
+4             NA                 NA        NA            NA       NA
+5             NA                 NA        NA            NA       NA
+6             NA                 NA        NA            NA       NA
+  Max.Temperature Average.Temperature Relative.Effort.1 Total.Work
+1              NA                  NA                NA         NA
+2              NA                  NA                NA         NA
+3              NA                  NA                NA         NA
+4              NA                  NA                NA         NA
+5              NA                  NA                NA         NA
+6              NA                  NA                NA         NA
+  Number.of.Runs Uphill.Time Downhill.Time Other.Time Perceived.Exertion
+1             NA          NA            NA         NA                 NA
+2             NA          NA            NA         NA                 NA
+3             NA          NA            NA         NA                 NA
+4             NA          NA            NA         NA                 NA
+5             NA          NA            NA         NA                 NA
+6             NA          NA            NA         NA                 NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.type
+1                                                                                       NA
+2                                                                                       NA
+3                                                                                       NA
+4                                                                                       NA
+5                                                                                       NA
+6                                                                                       NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.start_time
+1                                                                                             NA
+2                                                                                             NA
+3                                                                                             NA
+4                                                                                             NA
+5                                                                                             NA
+6                                                                                             NA
+  Weighted.Average.Power Power.Count Prefer.Perceived.Exertion
+1                     NA          NA                        NA
+2                     NA          NA                        NA
+3                     NA          NA                        NA
+4                     NA          NA                        NA
+5                     NA          NA                        NA
+6                     NA          NA                        NA
+  Perceived.Relative.Effort Commute.1 Total.Weight.Lifted From.Upload
+1                        NA        NA                  NA          NA
+2                        NA        NA                  NA          NA
+3                        NA        NA                  NA          NA
+4                        NA        NA                  NA          NA
+5                        NA        NA                  NA          NA
+6                        NA        NA                  NA          NA
+  Grade.Adjusted.Distance Weather.Observation.Time Weather.Condition
+1                      NA                       NA                NA
+2                      NA                       NA                NA
+3                      NA                       NA                NA
+4                      NA                       NA                NA
+5                      NA                       NA                NA
+6                      NA                       NA                NA
+  Weather.Temperature Apparent.Temperature Dewpoint Humidity Weather.Pressure
+1                  NA                   NA       NA       NA               NA
+2                  NA                   NA       NA       NA               NA
+3                  NA                   NA       NA       NA               NA
+4                  NA                   NA       NA       NA               NA
+5                  NA                   NA       NA       NA               NA
+6                  NA                   NA       NA       NA               NA
+  Wind.Speed Wind.Gust Wind.Bearing Precipitation.Intensity Sunrise.Time
+1         NA        NA           NA                      NA           NA
+2         NA        NA           NA                      NA           NA
+3         NA        NA           NA                      NA           NA
+4         NA        NA           NA                      NA           NA
+5         NA        NA           NA                      NA           NA
+6         NA        NA           NA                      NA           NA
+  Sunset.Time Moon.Phase Bike Gear Precipitation.Probability Precipitation.Type
+1          NA         NA   NA   NA                        NA                 NA
+2          NA         NA   NA   NA                        NA                 NA
+3          NA         NA   NA   NA                        NA                 NA
+4          NA         NA   NA   NA                        NA                 NA
+5          NA         NA   NA   NA                        NA                 NA
+6          NA         NA   NA   NA                        NA                 NA
+  Cloud.Cover Weather.Visibility UV.Index Weather.Ozone
+1          NA                 NA       NA            NA
+2          NA                 NA       NA            NA
+3          NA                 NA       NA            NA
+4          NA                 NA       NA            NA
+5          NA                 NA       NA            NA
+6          NA                 NA       NA            NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.jump_count
+1                                                                                             NA
+2                                                                                             NA
+3                                                                                             NA
+4                                                                                             NA
+5                                                                                             NA
+6                                                                                             NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.total_grit
+1                                                                                             NA
+2                                                                                             NA
+3                                                                                             NA
+4                                                                                             NA
+5                                                                                             NA
+6                                                                                             NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.avg_flow
+1                                                                                           NA
+2                                                                                           NA
+3                                                                                           NA
+4                                                                                           NA
+5                                                                                           NA
+6                                                                                           NA</code></pre>
+</div>
+</div>
+<p>Podemos quedarnos con las columnas que nos interesan:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Activity.ID"                                                                                   
+ [2] "Activity.Date"                                                                                 
+ [3] "Activity.Name"                                                                                 
+ [4] "Activity.Type"                                                                                 
+ [5] "Activity.Description"                                                                          
+ [6] "Elapsed.Time"                                                                                  
+ [7] "Distance"                                                                                      
+ [8] "Relative.Effort"                                                                               
+ [9] "Commute"                                                                                       
+[10] "Activity.Gear"                                                                                 
+[11] "Filename"                                                                                      
+[12] "Athlete.Weight"                                                                                
+[13] "Bike.Weight"                                                                                   
+[14] "Elapsed.Time.1"                                                                                
+[15] "Moving.Time"                                                                                   
+[16] "Distance.1"                                                                                    
+[17] "Max.Speed"                                                                                     
+[18] "Average.Speed"                                                                                 
+[19] "Elevation.Gain"                                                                                
+[20] "Elevation.Loss"                                                                                
+[21] "Elevation.Low"                                                                                 
+[22] "Elevation.High"                                                                                
+[23] "Max.Grade"                                                                                     
+[24] "Average.Grade"                                                                                 
+[25] "Average.Positive.Grade"                                                                        
+[26] "Average.Negative.Grade"                                                                        
+[27] "Max.Cadence"                                                                                   
+[28] "Average.Cadence"                                                                               
+[29] "Max.Heart.Rate"                                                                                
+[30] "Average.Heart.Rate"                                                                            
+[31] "Max.Watts"                                                                                     
+[32] "Average.Watts"                                                                                 
+[33] "Calories"                                                                                      
+[34] "Max.Temperature"                                                                               
+[35] "Average.Temperature"                                                                           
+[36] "Relative.Effort.1"                                                                             
+[37] "Total.Work"                                                                                    
+[38] "Number.of.Runs"                                                                                
+[39] "Uphill.Time"                                                                                   
+[40] "Downhill.Time"                                                                                 
+[41] "Other.Time"                                                                                    
+[42] "Perceived.Exertion"                                                                            
+[43] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.type"      
+[44] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.start_time"
+[45] "Weighted.Average.Power"                                                                        
+[46] "Power.Count"                                                                                   
+[47] "Prefer.Perceived.Exertion"                                                                     
+[48] "Perceived.Relative.Effort"                                                                     
+[49] "Commute.1"                                                                                     
+[50] "Total.Weight.Lifted"                                                                           
+[51] "From.Upload"                                                                                   
+[52] "Grade.Adjusted.Distance"                                                                       
+[53] "Weather.Observation.Time"                                                                      
+[54] "Weather.Condition"                                                                             
+[55] "Weather.Temperature"                                                                           
+[56] "Apparent.Temperature"                                                                          
+[57] "Dewpoint"                                                                                      
+[58] "Humidity"                                                                                      
+[59] "Weather.Pressure"                                                                              
+[60] "Wind.Speed"                                                                                    
+[61] "Wind.Gust"                                                                                     
+[62] "Wind.Bearing"                                                                                  
+[63] "Precipitation.Intensity"                                                                       
+[64] "Sunrise.Time"                                                                                  
+[65] "Sunset.Time"                                                                                   
+[66] "Moon.Phase"                                                                                    
+[67] "Bike"                                                                                          
+[68] "Gear"                                                                                          
+[69] "Precipitation.Probability"                                                                     
+[70] "Precipitation.Type"                                                                            
+[71] "Cloud.Cover"                                                                                   
+[72] "Weather.Visibility"                                                                            
+[73] "UV.Index"                                                                                      
+[74] "Weather.Ozone"                                                                                 
+[75] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.jump_count"
+[76] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.total_grit"
+[77] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.avg_flow"  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>activities <span class="ot">&lt;-</span> activities[,<span class="fu">c</span>(<span class="st">'Activity.Name'</span>, <span class="st">'Activity.Type'</span>, <span class="st">'Elapsed.Time'</span>, <span class="st">'Distance'</span>)]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Activity.Name Activity.Type Elapsed.Time Distance
+1 Afternoon Ride          Ride        50436     8.14
+2   Morning Ride          Ride         1745     7.96
+3 Afternoon Ride          Ride          944     6.97
+4 Afternoon Ride          Ride         4170    10.52
+5   Morning Ride          Ride         1744     7.62
+6 Afternoon Ride          Ride         1046     7.62</code></pre>
+</div>
+</div>
+<p>Podemos obtener un resumen del dataframe</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Activity.Name Activity.Type  Elapsed.Time      Distance     
+ Morning Ride  :45    Hike: 1       Min.   :  197   Min.   : 0.590  
+ Afternoon Ride:28    Ride:92       1st Qu.: 1230   1st Qu.: 7.715  
+ Evening Ride  :17    Run : 1       Median : 1745   Median : 7.820  
+ Afternoon Hike: 1    Walk: 1       Mean   : 2627   Mean   : 7.698  
+ Lunch Hike    : 1                  3rd Qu.: 2095   3rd Qu.: 8.000  
+ Morning Hike  : 1                  Max.   :50436   Max.   :15.200  
+ (Other)       : 2                                                  </code></pre>
+</div>
+</div>
+<p>Podemos filtrar y quedarnos solo los de una activity</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>activities_ride <span class="ot">&lt;-</span> activities[activities<span class="sc">$</span>Activity.Type<span class="sc">==</span><span class="st">'Ride'</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos calcular la media de una columna</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tiempo_medio_actividades <span class="ot">&lt;-</span> <span class="fu">mean</span>(activities_ride<span class="sc">$</span>Elapsed.Time)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El tiempo medio de todas las actividades es:"</span>, tiempo_medio_actividades, <span class="st">"segundos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El tiempo medio de todas las actividades es: 2295.61956521739 segundos"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El tiempo medio de todas las actividades es:"</span>, <span class="fu">round</span>(tiempo_medio_actividades<span class="sc">/</span><span class="dv">60</span>,<span class="dv">3</span>), <span class="st">"minutos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El tiempo medio de todas las actividades es: 38.26 minutos"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El tiempo medio de todas las actividades es:"</span>, <span class="fu">round</span>(tiempo_medio_actividades<span class="sc">/</span><span class="dv">60</span>), <span class="st">"minutos y "</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">round</span>(tiempo_medio_actividades <span class="sc">%%</span> <span class="dv">60</span>,<span class="dv">1</span>),<span class="st">"segundos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El tiempo medio de todas las actividades es: 38 minutos y  15.6 segundos"</code></pre>
+</div>
+</div>
+<p>Podemos pintar La relación entre el tiempo y la distancia:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.height=</span><span class="dv">4</span>,<span class="at">repr.plot.width=</span><span class="dv">8</span>, <span class="at">repr.plot.res =</span> <span class="dv">200</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(activities_ride, <span class="fu">aes</span>(<span class="at">x=</span>Elapsed.Time, <span class="at">y=</span>Distance, <span class="at">color=</span>Activity.Name))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">"Tiempo [seconds]"</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"Distancia [km]"</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Comparación de distancia y tiempo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1-Introduccion_BI_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Podemos crear diferentes tipos de gráficos sobre la distancia:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(activities_ride, <span class="fu">aes</span>(<span class="at">x=</span>Activity.Name, <span class="at">y=</span>Distance, <span class="at">color=</span>Activity.Name))<span class="sc">+</span><span class="fu">geom_violin</span>()<span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ylab</span>(<span class="st">"Distancia [km]"</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Comparación de distancia y tiempo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Groups with fewer than two data points have been dropped.
+Groups with fewer than two data points have been dropped.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="1-Introduccion_BI_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(activities_ride, <span class="fu">aes</span>(<span class="at">x=</span>Activity.Name, <span class="at">y=</span>Distance, <span class="at">color=</span>Activity.Name))<span class="sc">+</span><span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ylab</span>(<span class="st">"Distancia [km]"</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">"Comparación de distancia y tiempo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1-Introduccion_BI_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

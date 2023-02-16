@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS public.o_inventory
+(
+    inventory_id integer NOT NULL,
+    film_id integer NOT NULL,
+    store_id integer NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT inventory_pkey PRIMARY KEY (inventory_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_inventory
+    OWNER to postgres;
+
+CREATE INDEX idx_store_id_film_id
+    ON public.o_inventory USING btree
+    (store_id ASC NULLS LAST, film_id ASC NULLS LAST)
+    TABLESPACE pg_default;

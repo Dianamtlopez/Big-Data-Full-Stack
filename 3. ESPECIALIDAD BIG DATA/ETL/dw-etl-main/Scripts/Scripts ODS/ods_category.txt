@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS public.o_category
+(
+    category_id integer NOT NULL,
+    name character varying(25) COLLATE pg_catalog."default" NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT category_pkey PRIMARY KEY (category_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_category
+    OWNER to postgres;

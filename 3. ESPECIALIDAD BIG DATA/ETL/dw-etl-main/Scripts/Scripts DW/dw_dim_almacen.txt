@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS public.dim_almacen
+(
+    sk_almacen integer NOT NULL,
+    id_almacen integer NOT NULL,
+    id_manager integer NOT NULL,
+    id_dir_almacen integer NOT NULL,
+    txt_dir_almacen character(50) COLLATE pg_catalog."default",
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default",
+    CONSTRAINT dim_almacen_pkey PRIMARY KEY (sk_almacen)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.dim_almacen
+    OWNER to postgres;
+-- Index: idx_dim_almacen
+
+-- DROP INDEX public.idx_dim_almacen;
+
+CREATE UNIQUE INDEX idx_dim_almacen
+    ON public.dim_almacen USING btree
+    (id_almacen ASC NULLS LAST)
+    TABLESPACE pg_default;

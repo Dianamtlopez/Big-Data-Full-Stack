@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS public.o_store
+(
+    store_id integer NOT NULL,
+    manager_staff_id integer NOT NULL,
+    address_id integer NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT store_pkey PRIMARY KEY (store_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_store
+    OWNER to postgres;
+
+CREATE UNIQUE INDEX idx_unq_manager_staff_id
+    ON public.o_store USING btree
+    (manager_staff_id ASC NULLS LAST)
+    TABLESPACE pg_default;

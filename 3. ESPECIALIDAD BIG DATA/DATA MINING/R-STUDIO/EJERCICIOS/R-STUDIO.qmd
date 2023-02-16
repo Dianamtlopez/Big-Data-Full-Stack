@@ -1,0 +1,590 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# video 04 -- variables
+
+Objetivo: estudiar qué es una variable en R.
+
+En este ejercicio vamos a:
+
+1.  Realizar operaciones aritméticas en la consola
+2.  Asignar variables a un script en RStudio, y
+3.  Identificar distintos tipos de datos en R
+
+# practica 1: operaciones aritméticas
+
+Primer acertijo de redes sociales
+
+```{r}
+1+1-1*(1+1-1)/1+1*(-1)
+```
+
+# practica 2: asignación de variables
+
+Asigna los numeros a cada fruta
+
+```{r}
+mango <- 10
+manzana <- 5 
+aguacate <- 15
+```
+
+Resuelve el complejo acertijo
+
+```{r}
+resultado <- 2 * aguacate + 4 * manzana + 1.5 * mango
+```
+
+Imprime el resultado por pantalla
+
+```{r}
+print(resultado)
+```
+
+# practica 3: tipos de variables
+
+Observa la clase del resultado
+
+```{r}
+class(resultado)
+```
+
+Crea una variable con algún nombre
+
+```{r}
+nombre <- "Diana"
+```
+
+Observa la clase del nombre
+
+```{r}
+class(nombre)
+```
+
+Es 1 mayor que 2
+
+```{r}
+binario <- 1 > 2
+```
+
+Cuál es la clase de esto
+
+```{r}
+class(binario)
+```
+
+Suma nombre con resultado
+
+No se pueden unir variables de distintos tipos de datos
+
+# video 05 - vectores
+
+Objetivo: estudiar qué es una vector en R.
+
+En este ejercicio vamos a:
+
+1.  Crear vectores en un script
+2.  Realizar opraciones aritméticas con vectores
+3.  Seleccionar elementos en un vector
+
+# práctica 1: creando vectores en R
+
+Crear vector carácter con nombre de las películas
+
+```{r}
+nombre <- c("Shrek", "Shrek 2", "Shrek tercero", "Shrek: Felices por siempre")
+```
+
+Crear vector numérico con puntuación de las películas
+
+```{r}
+puntuacion <- c(7.9, 7.2, 6.1, 6.3)
+```
+
+Crear vector lógico sobre si la película es posterior a 2015
+
+```{r}
+posterior_2005 <- c(FALSE, FALSE, TRUE, TRUE)
+```
+
+# práctica 2: operaciones aritméticas con vectores
+
+Sumar 2 a la puntuación
+
+```{r}
+puntuacion + 2
+```
+
+Dividir la puntuación entre 2
+
+```{r}
+puntuacion / 2
+```
+
+Crea la puntuación de diana
+
+```{r}
+puntuacion_de_diana <- c(10, 9, 6, 7)
+```
+
+Calcular diferencia entre puntuaciones
+
+```{r}
+puntuacion_de_diana - puntuacion
+```
+
+Calcular la longitud del vector
+
+```{r}
+length(puntuacion)
+```
+
+Sumar los elementos del vector
+
+```{r}
+sum(puntuacion)
+```
+
+Calcular el promedio del vector puntuacion
+
+```{r}
+mean(puntuacion)
+```
+
+# práctica 3: selección de elementos de un vector
+
+Selección basada en posición
+
+Seleccionar la tercera película
+
+```{r}
+nombre[3]
+```
+
+Seleccionar la primera y la última película
+
+```{r}
+nombre[c(1,4)]
+```
+
+Selección basada en condición lógica
+
+Crear condición lógica
+
+```{r}
+puntuacion_baja <- puntuacion < 7
+```
+
+Mostrar condición para ver TRUE/FALSE
+
+```{r}
+print(puntuacion_baja)
+```
+
+Mostrar puntuaciones bajas
+
+```{r}
+puntuacion[puntuacion_baja]
+```
+
+Mostrar nombres de películas con puntuaciones bajas
+
+```{r}
+nombre[puntuacion_baja]
+```
+
+Puntuación mayor a 7, ...
+
+```{r}
+puntuacion_alta <- puntuacion > 7
+```
+
+```{r}
+print(puntuacion_alta)
+```
+
+Mostrar puntuaciones altas
+
+```{r}
+puntuacion[puntuacion_alta]
+```
+
+Mostrar nombres de películas con puntuaciones altas
+
+```{r}
+nombre[puntuacion_alta]
+```
+
+# video 06 -- matrices
+
+Objetivo: estudiar qué es una matriz en R.
+
+En este ejercicio vamos a:
+
+1.  Crear matrices en un script
+2.  Realizar opraciones aritméticas con matrices
+3.  Seleccionar elementos en una matriz
+
+# práctica 1: creando matrices en R
+
+Crear vectores para las columnas de la matriz
+
+```{r}
+warner <- c(20, 20, 16, 17, 17, 22, 17, 18, 19)
+
+disney <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
+
+fox <- c(18, 15, 15, 15, 16, 17, 15, 13, 11)
+
+```
+
+# fuente https://www.the-numbers.com/market/
+
+Creando matriz a partir de vectores
+
+```{r}
+peliculas <- matrix(c(warner, disney, fox), 
+             nrow = 9,
+             ncol = 3)
+```
+
+Imprimir matriz en consola
+
+```{r}
+print(peliculas)
+```
+
+Agregar nombres de columnas
+
+```{r}
+colnames(peliculas) <- c('warner', 'disney', 'fox')
+```
+
+Agregar nombres de filas/renglones
+
+```{r}
+rownames(peliculas) <- c('2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018')
+```
+
+Imprimir matriz por segunda vez
+
+```{r}
+print(peliculas)
+```
+
+# práctica 2: operaciones aritméticas con matrices
+
+Resta 5 a la matriz
+
+```{r}
+peliculas - 5
+```
+
+Sumar matriz consigo misma (se hace elemento a elemento)
+
+```{r}
+peliculas + peliculas
+```
+
+Multiplicar la matriz consigo mismo (se hace elemento a elemento)
+
+```{r}
+peliculas * peliculas
+```
+
+# práctica 3: selección de elementos de un matriz
+
+Seleccionar un elemento de la matriz
+
+```{r}
+peliculas[3,2]
+peliculas['2012', 'disney']
+```
+
+Seleccionar más de un elemento de la matriz
+
+```{r}
+peliculas[c(3,2), c(2,3)]
+peliculas[c(3,2), c('disney', 'fox')]
+```
+
+Seleccionar una fila o renglón
+
+```{r}
+peliculas[3,]
+peliculas['2012',]
+```
+
+Seleccionar una columna
+
+```{r}
+peliculas[,2]
+peliculas[,'disney']
+```
+
+# video 07 -- factores
+
+Objetivo: estudiar qué son factores en R. 
+
+En este ejercicio vamos a:
+
+1.  Crear factores en R
+2.  Recodificar niveles de un factor
+3.  Ordenar niveles de un factor
+
+crear vector de ventas
+correr esto antes de empezar...
+
+```{r}
+tallas <- c('m', 'g', 'S', 'S','m', 'M')
+```
+
+intentar graficar
+
+```{r}
+# plot(tallas)
+```
+
+# práctica 1: crear factores en R
+
+crear factor de un vector
+
+```{r}
+tallas_factor <- factor(tallas)
+```
+
+# graficar factor
+
+```{r}
+plot(tallas_factor)
+```
+
+# mirar niveles de factor
+
+```{r}
+levels(tallas_factor)
+```
+
+# práctica 2: recodificando factores
+
+creando factor recodificado (Limpieza de datos)
+
+```{r}
+tallas_recodificado <- factor(tallas,
+                              levels = c('g', 'm', 'M', 'S'),
+                              labels = c('G', 'M', 'M', 'S'))
+```
+
+graficando ventas_recodificado
+
+```{r}
+plot(tallas_recodificado)
+```
+
+# práctica 3: ordenando niveles de factores
+
+ordenando niveles (copiar factor anterior)
+
+```{r}
+tallas_ordenado <- factor(tallas,
+                              ordered = TRUE,
+                              levels = c('S', 'm', 'M', 'g'),
+                              labels = c('S', 'M', 'M', 'G'))
+```
+
+viendo el orden en los niveles
+
+```{r}
+print(tallas_ordenado)
+```
+
+graficando el factor ordenado
+
+```{r}
+plot(tallas_ordenado)
+```
+# video 08 – dataframes
+Objetivo: estudiar qué son dataframes en R.
+
+En este ejercicio vamos a:
+
+1. Crear dataframes en R
+2. Ordenar dataframes por columnas
+3. Seleccionar elementos de un dataframe
+
+vectores sobre peliculas de Shrek
+correr esto antes de empezar…
+```{r}
+nombre <- c("Shrek", "Shrek 2", "Shrek Tercero", "Shrek: Felices por siempre")
+puntuacion <- c(7.9, 7.2, 6.1, 6.3)
+posterior_2005 <- c(FALSE, FALSE, TRUE, TRUE)
+```
+# práctica 1: crear un dataframe en R
+crear dataframe de vectores
+```{r}
+peliculas_df <- data.frame(nombre,
+                           puntuacion,
+                           posterior_2005)
+```
+mostrar dataframe
+```{r}
+peliculas_df
+```
+cambiar nombre de dataframe
+```{r}
+names(peliculas_df) <- c('NOMBRE',
+                         'PUNTUACION',
+                         'POSTERIOR_2005')
+```
+mostrar dataframe (sí, otra vez)
+```{r}
+peliculas_df
+```
+# práctica 2: Seleccionar elementos de un dataframe
+seleccionar un elemento del dataframe
+```{r}
+peliculas_df[3,2]
+peliculas_df[3,'PUNTUACION']
+```
+seleccionar más de un elemento del dataframe
+```{r}
+peliculas_df[c(3,4), c(2,3)]
+peliculas_df[c(3,4), c('PUNTUACION', 'POSTERIOR_2005')]
+```
+seleccionar una fila o renglón del dataframe
+```{r}
+peliculas_df[3,]
+```
+seleccionar una columna del dataframe
+```{r}
+peliculas_df[,2]
+peliculas_df[,'PUNTUACION']
+peliculas_df$PUNTUACION
+```
+# práctica 3: ordenar dataframe
+mostrar el dataframe
+```{r}
+peliculas_df
+```
+mostrar el indice de la columna de puntuacion con order
+```{r}
+order(peliculas_df$PUNTUACION)
+```
+funcion order (menor a mayor)
+```{r}
+orden_menor_mayor <- order(peliculas_df$PUNTUACION, decreasing = FALSE)
+```
+mostrar el dataframe ordenado
+```{r}
+peliculas_df[orden_menor_mayor,]
+```
+funcion order (mayor a menor)
+```{r}
+orden_mayor_menor <- order(peliculas_df$PUNTUACION, decreasing = TRUE)
+```
+mostrar el dataframe ordenado
+```{r}
+peliculas_df[orden_mayor_menor,]
+```
+guardar el dataframe ordenado
+```{r}
+df_ordenado <- peliculas_df[orden_mayor_menor, ]
+```
+mostrar el dataframe
+```{r}
+df_ordenado
+```
+# video 09 – listas
+
+Objetivo: estudiar qué son las listas en R
+
+En este ejercicio vamos a:
+1. Crear listas en R
+2. Seleccionar elementos de una lista
+3. Identificar listas en R
+
+Cargando datos de videos anteriores
+(correr esto antes de empezar…)
+```{r}
+nombre <- c("Shrek", "Shrek 2", "Shrek Tercero", "Shrek: Felices por siempre")
+puntuacion <- c(7.9, 7.2, 6.1, 6.3)
+posterior_2005 <- c(FALSE, FALSE, TRUE, TRUE)
+warner <- c(20, 20, 16, 17, 17, 22, 17, 18, 19)
+disney <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
+fox <- c(18, 15, 15, 15, 16, 17, 15, 13, 11)
+```
+crear diferentes estructuras de datos en R
+```{r}
+vector_titulos <- nombre
+matriz_peliculas <- matrix(c(warner, disney, fox),
+                    nrow = 9,
+                    ncol = 3)
+peliculas_df <- data.frame(nombre,
+                           puntuacion,
+                           posterior_2005)
+```
+# práctica 1: crear una lista en R
+crear lista en R
+```{r}
+lista_curso <- list(vector_titulos, 
+                    matriz_peliculas)
+```
+mostrar lista
+```{r}
+lista_curso
+```
+
+cambiar nombre de dataframe
+```{R}
+names(lista_curso) <- c('VECTOR', 'MATRIZ')
+```
+mostrar lista (sí, otra vez)
+```{R}
+lista_curso
+```
+# práctica 2: Seleccionar elementos de una lista 
+Seleccionar vector de la lista
+```{r}
+lista_curso[['VECTOR']]
+```
+Seleccionar el tercer elemento del vector de la lista
+```{r}
+lista_curso[['VECTOR']][3]
+```
+Seleccionar fila 5 y columna 3 de la matriz de la lista
+```{r}
+lista_curso[['MATRIZ']][5,3]
+```
+# práctica 3: agregar/eliminar elementos a una lista
+agregar dataframe a lista
+```{r}
+lista_curso[['data_frame']] <- peliculas_df
+```
+revisar que está el dataframe
+```{r}
+lista_curso
+```
+eliminar un elemento de lista
+```{r}
+lista_curso[['VECTOR']] <- NULL
+```
+revisar que no está el vector
+```{r}
+lista_curso
+```

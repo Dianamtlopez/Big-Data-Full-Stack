@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS public.o_country
+(
+    country_id integer NOT NULL,
+    country character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT country_pkey PRIMARY KEY (country_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_country
+    OWNER to postgres;

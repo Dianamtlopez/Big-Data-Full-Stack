@@ -1,0 +1,191 @@
+# cambiar el nombre:  git config --global user.name "Diana Maria Toro Lopez"
+cambiar correo: git config --global user.email "dianamtlopez@hotmail.com"
+git config --global core.editor nano
+
+# Crear un repositorio en git no es igual a gitHub
+crear una carpeta:
+mkdir MiProyecto
+# para decirle que en esa carpeta se controle los cambios de los archivos
+git init
+
+con git tres zonas
+1. working copy / working directory : la carpeta de nuestro proyecto
+2. Stagig Area : deonde colocamos los archivos de los que git va a guardando versiones de ellos (tambien se le conoce como index o cache), no hemos guardado version de él, solo candidatos para guardar
+3. zona repositorio: es donde almacenamos toda la informacion de los cambios
+
+git status puedo ver lo que esta en el string area
+
+# para copiar archivos en el git area, solo doy git add
+git add readme.md
+# mueve todos los archivos en el staging area area
+git add . 
+
+# quitar uno de ellos 
+guit rm --cached readme.md
+
+# que es un comit: hacer una foto de lo que hay en el escenario en ese momento del tiempo
+# git no guarda archivos, el guarda cambios en los archivos
+
+# commit
+# es un conjunto de cosas
+# lineas que se han cambiado en los archivos
+# lleva un mensaje que dice el motivo por el cual se hace el cambio
+# tiene un hash sha o un numero de identificación
+# una referencia al commit que existía antes de el o su padre
+# un hank por archivo
+
+# un commit conoce al padre pero no al hijo
+# van solo las lineas que se cambian en los archivos
+# quien lo hace, nombre y e-mail
+# fecha y hora en la cual se hace el commit
+
+# puntero master A
+puntero g apunta a master
+
+# cuando ejecutamos solo poniendo git commit, el va a abrir un editor de texto por defecto y me dejaría escribir algo, es la manera que tiene git para pedir el mensaje
+
+# Cuando escribo mensajes cortos para no abrir nano, mando el mensaje directamente:
+git commit -m "Creo archivo readme"
+
+# git log, me muestra los commit
+# si estamos en git log como editor escribo q y salgo
+git log
+
+#  des hacer cambios en los commit
+git restore
+
+# deshacer cosas deshacer un commit
+# un commit es in alterable o indestructible
+git reset HEAD~1
+
+git nunca altera un archivo, salvo que yo le diga que lo haga
+
+git status compara lo que hay en el directorio frente al working copy
+
+# para borrar archivos
+git rm == hacer un rm + git add
+
+git restore --staged index.md
+git restore index.md
+
+# hago un mal commit, quiero deshacerlo para hacer uno mejor
+
+deshacer el commit y deshacer el cambio
+borramos readme.md por error
+rm readme.md
+verifico con git status
+git add . para poner el cambio en el stagin area
+git commit -m "Eliminé el archivo readme.md por error"
+
+restauro version anterior del archivo, ya sea por código o por mal hecho el commit
+deshacer el commit
+git reset HEAD~1 solo altera el grafo
+recupero la ultima copia de los archivos
+git restore readme.md
+git restore index.md
+
+git reset --hard HEAD~1
+hace un git restore de todos los cambios, deshace los cambios
+es como unir reset y restore
+vuelve al commit anterior y descarta cualquier cambio realizado
+con este se va todo y se puede perder todo
+
+equivocarme al hacer un reset
+# nos muestra lo que ha pasado en el repositorio es como un rastro de los punteros
+git reflog
+muestra el hash resumido
+el commit : 
+el mensaje del commit
+
+para devolvernos al inicio
+git reset --hard HEAD~3
+
+Para volver despues del reset --hard
+git reflog detectamos donde queremos ir
+git reset coloco el identificador del commit 471b126
+
+reset es para mover puntero head y master a donde yo quiera
+
+ramas o branches
+las podemos entender como directorios virtuales o workin directory.
+universos paralelos con un punto en común.
+para que sirven
+diferentes punto de entrada al grafo
+nos permiten desarrollar diferentes cosas en paralelo
+
+crear una rama nueva
+git branch NewFeature
+
+cambiar de una rama a otra
+git checkout NewFeature
+checkout modifica mi working directory.
+
+git commit -m "creo resumen del libro 2"
+git log
+
+LarryPlotter on
+git checkout master
+switched to branch 'master'
+
+LarryPlotter on
+git checkout 90s
+switched to branch '90s'
+
+LarryPlotter on
+git checkout 2000s
+switched to branch '2000s'
+
+LarryPlotter on
+git log
+
+LarryPlotter on
+git reset -hard + hash
+
+reset mueve la rama donde este el head
+lo que se mueve solo sin estar acompañado de la rama es con checkout
+
+que pasa con el commit inalcanzable
+LarryPlotter on
+git branch 90s 75834aa
+
+LarryPlotter on
+Switched to branch '90s'
+
+recuperar ramas 
+git branch -d rama
+
+Pasos para configurar GitHub
+1. Paso, crear repositorio en GitHub
+2. Paso crear el repositorio
+3. Paso clonar el repositorio : git clone + url
+    Nota, esto crea una carpeta con el código que me descargo de GitHub dentro de la carpeta que yo ejecute git clone
+ ejemplo: cdgit clone https://github.com/Dianamtlopez/LarryGithub.git
+como el código está en otro lado debo decir donde estan los archivos
+4. debo dar de alta el repositorio, debo escribir git remote
+en la carpeta que estamos guardando archivos debo añadir git remote add
+git remote add origin https://github.com/Dianamtlopez/LarryGithub.git
+asi quedan ambas carpetas con el repositorio remoto
+lo mas importante es entender el grafo, que pasa con el es entender todo
+git remote -v
+5. debo descargar primero los cambios que esten en el servidor remoto, unirlo en mi local, solucionar problemas y subir ya el código en orden
+git pull origin este comando descarga cosas y hace merge une fetch + merge
+vamos al repositorio local donde guardamos archivos, vamos a la rama master o principal
+git push -u origin master
+como previamente estaba configurado ssh, en otros casos hay que colocar usuario e ir y buscar contraseña
+debemos ir al icono de mi usuario, a settings, developper settings personal acces tokens, se recomineda usar tokens clasicos, generamos uno nuevo, y colocarle que no caduque nunca y en scou de repo(permisos), generate code
+
+ahora voy a la carpeta de configuracion del repositorio remoto (LarryGithub) y doy git pull
+git checkout master
+Switched to a new branch 'master'
+branch 'master' set up to track 'origin/master'.
+
+si fuese repo privado no puedo ni leer ni descargar, como es publico, puedo leer y descargar pero no modificar
+
+
+
+
+
+
+
+
+

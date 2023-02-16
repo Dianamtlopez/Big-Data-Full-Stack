@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS public.o_address
+(
+    address_id integer NOT NULL,
+    address character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    address2 character varying(50) COLLATE pg_catalog."default",
+    district character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    city_id integer NOT NULL,
+    postal_code character varying(10) COLLATE pg_catalog."default",
+    phone character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT address_pkey PRIMARY KEY (address_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_address
+    OWNER to postgres;
+
+CREATE INDEX idx_fk_city_id
+    ON public.o_address USING btree
+    (city_id ASC NULLS LAST)
+    TABLESPACE pg_default;

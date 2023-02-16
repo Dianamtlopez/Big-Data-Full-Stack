@@ -1,0 +1,137 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T3V2 - GRAFICAS CON MOVIMIENTO
+ 
+Objetivo: hacer graficas animadas con ggplot2
+
+En este ejercicio vamos a:
+1. grafica basica
+2. animando grafica
+3. mejorando animación
+
+cargar librerías
+```{r}
+#install.packages("tidyverse")
+library(tidyverse)
+```
+instalando paquete para animar
+```{r}
+#install.packages('gganimate')
+#library(ggplot2)
+library (gganimate)
+```
+```{r}
+#install.packages('gifski')
+library(gifski)
+```
+instalando paquete con los datos
+```{r}
+#install.packages("gapminder")
+```
+cargando paquete con los datos
+```{r}
+library(gapminder)
+```
+cargando datos a entorno
+```{r}
+data("gapminder")
+```
+mostrar datos
+```{r}
+head(gapminder)
+```
+# grafica básica
+```{r}
+# Grfica de puntos que muestre la esperanza de vida a lo largo de los años
+gapminder %>%
+  group_by(year, continent) %>%
+  # creamos una variable mean_life que tenga la media de la esperanza de vida
+  summarize(mean_life = mean(lifeExp)) %>% 
+  # Elemenros esteticos
+  ggplot(aes(x = year,
+         y = mean_life,
+         color = continent)) + 
+  geom_line()
+```
+#2. Animando la grafica
+```{r}
+# Grfica de puntos que muestre la esperanza de vida a lo largo de los años
+gapminder %>%
+  group_by(year, continent) %>%
+  # creamos una variable mean_life que tenga la media de la esperanza de vida
+  summarize(mean_life = mean(lifeExp)) %>% 
+  # Elemenros esteticos
+  ggplot(aes(x = year,
+         y = mean_life,
+         color = continent)) + 
+  geom_line() + 
+  # gganimate, grafica con movimiento, creciendo a lo largo de los años
+  transition_reveal(year)
+```
+#3. Mejorando animacion
+```{r}
+# Grfica de puntos que muestre la esperanza de vida a lo largo de los años
+gapminder %>%
+  group_by(year, continent) %>%
+  # creamos una variable mean_life que tenga la media de la esperanza de vida
+  summarize(mean_life = mean(lifeExp)) %>% 
+  # Elemenros esteticos
+  ggplot(aes(x = year,
+         y = mean_life,
+         color = continent)) + 
+  # Aumentamos el tamaño
+  geom_line(size = 2) +
+  # colocar lineas y puntos al mismo tiempo
+  geom_point(size = 4) +
+  # se escriben etiquetas en otra capa, frame_along hace que el año cambien despues de end
+  labs(color = 'CONTINENTES', 
+       title = 'Esperanza de vida en {frame_along}',
+       x = 'Fecha', 
+       y = 'Años de Vida') + 
+  theme_minimal() +
+  # gganimate, grafica con movimiento, creciendo a lo largo de los años
+  transition_reveal(year)
+```
+Varias graficas
+```{r}
+# una grafica por continente, viene bien para construir varias graficas de una sola vez
+gapminder %>%
+  filter(year == '2007') %>%
+  ggplot(aes (x = gdpPercap,
+              y = lifeExp,
+              color = continent)) +
+  geom_point() +
+  facet_wrap(~ continent)
+
+```
+unir dataframes
+```{r}
+# Creamos los dataframes
+x <- data.frame(col1 = c(1,2,3),
+                co12 = c('Ana', 'Pedro', 'Juan'))
+y <- data.frame(col1 = c(2,3,4),
+                col2 = c('Pedro', 'Juan', 'carol'))
+bind_rows(x, y)
+```
+```{r}
+#install.packages("dplyr")
+#library(dplyr)
+union(x, y)
+```

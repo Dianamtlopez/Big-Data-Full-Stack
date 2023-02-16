@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS public.o_film_category
+(
+    film_id integer NOT NULL,
+    category_id integer NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT film_category_pkey PRIMARY KEY (film_id, category_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_film_category
+    OWNER to postgres;

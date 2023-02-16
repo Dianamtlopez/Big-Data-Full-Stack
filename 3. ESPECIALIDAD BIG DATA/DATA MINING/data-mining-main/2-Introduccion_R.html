@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>introduccion_r</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="2-Introduccion_R_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2-Introduccion_R_files/libs/quarto-html/quarto.js"></script>
+<script src="2-Introduccion_R_files/libs/quarto-html/popper.min.js"></script>
+<script src="2-Introduccion_R_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="2-Introduccion_R_files/libs/quarto-html/anchor.min.js"></script>
+<link href="2-Introduccion_R_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2-Introduccion_R_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="2-Introduccion_R_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="2-Introduccion_R_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="2-Introduccion_R_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="introducción-a-r" class="level1">
+<h1>Introducción a R</h1>
+<p>R es un lenguaje de programación orientado a la estadística.</p>
+<p>Algo parecido a SPSS o Matlab.</p>
+<p>Es código abierto y se entrega bajo licencia GPL (versión 2 o posterior). Además existen multitud de paquetes que complementan su funcionalidad.</p>
+<section id="asignaciones" class="level2">
+<h2 class="anchored" data-anchor-id="asignaciones">Asignaciones</h2>
+<p>Podemos usar &lt;- o el símbolo = para asignar un valor a una variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># se asigna 10 a la variable a</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># se asigna 2 a la variable b</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># se asigna texto a la variable c</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">"texto variable"</span> <span class="ot">-&gt;</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># para ver las variables</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># concatenar texto a una variable</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># concatena vectores despues de convertirlo a caracteres</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El valor de a es:"</span>,a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor de a es: 10"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El vector a es: "</span>, a, <span class="st">"hola"</span>, <span class="at">sep =</span><span class="st">'---'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El vector a es: ---10---hola"</code></pre>
+</div>
+</div>
+</section>
+<section id="operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="operaciones">Operaciones</h2>
+<section id="operaciones-matemáticas" class="level3">
+<h3 class="anchored" data-anchor-id="operaciones-matemáticas">Operaciones matemáticas</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">+</span> a    <span class="co">#Suma</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">*</span> a    <span class="co">#Multiplicación</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">-</span> a    <span class="co">#Resta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b <span class="sc">/</span> a    <span class="co">#División: </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%/%</span> b  <span class="co">#División entera: </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%%</span> b   <span class="co">#Módulo o resto de la división: </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">^</span> b    <span class="co">#Potencia: </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+</section>
+<section id="otro-tipo-de-operador" class="level3">
+<h3 class="anchored" data-anchor-id="otro-tipo-de-operador">Otro tipo de operador</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>        <span class="co">#Secuencias</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="sc">%in%</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">10</span> <span class="co">#contiene</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_sec <span class="ot">&lt;-</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="funciones-básicas" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-básicas">Funciones básicas</h2>
+<p>Las funciones * siempre acaban en () * pueden recibir un número variable de parámetros * pueden existir parámetros por defecto</p>
+<p>Ver las variables en memoria:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lista las variables que se encuentren en memoria</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a"      "b"      "c"      "my_sec"</code></pre>
+</div>
+</div>
+<p>Ver el tipo de variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
+</div>
+</div>
+<p>Para concatenar textos usamos paste(a, b, c, …)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El valor de a es "</span>,a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor de a es  10"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="tipos-de-datos" class="level1">
+<h1>Tipos de datos</h1>
+<section id="numérico" class="level2">
+<h2 class="anchored" data-anchor-id="numérico">Numérico</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ver el tipo de variable</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convertir a entero</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(a)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">as.character</span>(b)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> T</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+</section>
+<section id="texto" class="level2">
+<h2 class="anchored" data-anchor-id="texto">Texto</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="st">" Discovery"</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ver el contenido de la variable</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>s1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] " Discovery"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tipo de la variable</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(s1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</section>
+<section id="logical" class="level2">
+<h2 class="anchored" data-anchor-id="logical">Logical</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> T</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>b4 <span class="ot">&lt;-</span> F</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El valor de b1 es"</span>,b1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor de b1 es TRUE"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El valor de b2 es"</span>,b2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor de b2 es TRUE"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El valor de b3 es"</span>,b3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor de b3 es FALSE"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"El valor de b3 es"</span>,b4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor de b3 es FALSE"</code></pre>
+</div>
+</div>
+</section>
+<section id="vectores" class="level2">
+<h2 class="anchored" data-anchor-id="vectores">Vectores</h2>
+<p>Los vectores se crean con la función c(), todos los elementos de un vector son del mismo tipo. Es decir, no se podrían mezclar caracteres y double.</p>
+<p>En Python se llaman listas:</p>
+<pre><code>a = [1,2,3,40]</code></pre>
+<p>En Java arrays:</p>
+<pre><code>   int[] a={1,2,3,40};</code></pre>
+<p><strong>En R son vectores:</strong> Función que combina valores</p>
+<pre><code>   a = c(1,2,3,40)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combina todos los valores y los devuelve en un objeto tipo vector</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>alturas<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">1.80</span>,<span class="fl">1.60</span>,<span class="fl">1.50</span>,<span class="fl">1.90</span>,<span class="fl">1.75</span>,<span class="fl">1.63</span>,<span class="fl">1.65</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"alturas es una variable de tipo:"</span>,<span class="fu">typeof</span>(alturas)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "alturas es una variable de tipo: double"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>alturas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.80 1.60 1.50 1.90 1.75 1.63 1.65</code></pre>
+</div>
+</div>
+<p>Obtener más información de la estructura de una variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(alturas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> num [1:7] 1.8 1.6 1.5 1.9 1.75 1.63 1.65</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector tipo texto</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>myTxt     <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"rojo"</span>,<span class="st">"verde"</span>,<span class="st">"azul"</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>myTxt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "rojo"  "verde" "azul" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(myTxt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> chr [1:3] "rojo" "verde" "azul"</code></pre>
+</div>
+</div>
+<section id="acceso-a-elementos" class="level4">
+<h4 class="anchored" data-anchor-id="acceso-a-elementos">Acceso a elementos:</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># en R los vectores inician en 1</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"El valor del tercer elemento es:"</span>,alturas[<span class="dv">3</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "El valor del tercer elemento es: 1.5"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># longitud del numero de elementos</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(alturas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ultimo elemento del vector</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>alturas[<span class="fu">length</span>(alturas)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.65</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ver varios elementos de un vector, la c, genera un vector</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>alturas[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.8 1.6 1.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separar elementos con una coma se debe hacer por medio de colapse</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(alturas[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)], <span class="at">collapse =</span> <span class="st">', '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1.8, 1.6, 1.5"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar texto más el vector separado por comas</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Alturas del 1 al 3: "</span>, <span class="fu">paste</span>(alturas[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)], <span class="at">collapse =</span> <span class="st">', '</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Alturas del 1 al 3:  1.8, 1.6, 1.5"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># almacenar las tres alturas en una variable</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>las_3_alturas <span class="ot">&lt;-</span> <span class="fu">paste</span>(alturas[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)], <span class="at">collapse =</span> <span class="st">', '</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mostrar texto más el vector separado por comas</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Alturas del 1 al 3: "</span>, las_3_alturas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Alturas del 1 al 3:  1.8, 1.6, 1.5"</code></pre>
+</div>
+</div>
+<p><strong>¡¡En R los vectores empiezan en 1!!</strong></p>
+</section>
+</section>
+<section id="data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="data-frame">Data Frame</h2>
+<p>Un Dataframe es una tabla como la que podemos encontrar en cualquier hoja de calculo.</p>
+<p><img src="pics/ejemplo_dataframe.png" class="img-fluid"></p>
+<p>La información se estructura en columnas, cada columna puede ser de un tipo de variable diferente: categorica, numerica, fecha, etc..</p>
+<p>Cada fila representa un elemento u objeto cuyos atributos están representados por las columnas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Generar un dataframe</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Animal=</span><span class="fu">c</span>(<span class="st">'Perro'</span>, <span class="st">'Periquito'</span>, <span class="st">'Gato'</span>, <span class="st">'Caballo'</span>),</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Cantidad=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>),</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Peso=</span><span class="fu">c</span>(<span class="dv">30</span>, <span class="fl">0.01</span>, <span class="dv">2</span>, <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># igual que los vectores, tienen un indice de acceso</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Animal Cantidad  Peso
+1     Perro       10 3e+01
+2 Periquito        3 1e-02
+3      Gato        4 2e+00
+4   Caballo        1 5e+02</code></pre>
+</div>
+</div>
+<p>Podemos acceder a por filas y columnas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder a la primera fila (filas coma columna)</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Animal Cantidad Peso
+1  Perro       10   30</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder a la segunda columna (filas coma columna)</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10  3  4  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder por nombre</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Cantidad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10  3  4  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder por nombre</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>df[,<span class="st">'Cantidad'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10  3  4  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder por nombre en forma de columna</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Cantidad'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Cantidad
+1       10
+2        3
+3        4
+4        1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Podemos buscar aquellos que pesan más de 20kg</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Animal Cantidad Peso
+1   Perro       10   30
+4 Caballo        1  500</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simplemente se hace la pregunta df$Peso&gt;20</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE FALSE  TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Le digo, devuelveme el primero y el cuarto</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Animal Cantidad Peso
+1   Perro       10   30
+4 Caballo        1  500</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Le digo, devuelveme el primero y el cuarto otra manera</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Animal Cantidad Peso
+1  Perro       10   30
+3   Gato        4    2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Podemos buscar aquellos que pesan más de 20kg</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>df[df[,<span class="st">'Peso'</span>] <span class="sc">&gt;</span> <span class="dv">20</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Animal Cantidad Peso
+1   Perro       10   30
+4 Caballo        1  500</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtrar y combinar columnas</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">'Los animales que pesan más de 20kg son:'</span>, <span class="fu">paste</span>(df[df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>,<span class="st">'Animal'</span>], <span class="at">collapse=</span><span class="st">','</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Los animales que pesan más de 20kg son: Perro,Caballo"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Devuelve un df con los datos</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Animal Cantidad Peso
+1   Perro       10   30
+4 Caballo        1  500</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Devuelve los animales de la consulta</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>, <span class="st">"Animal"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Perro"   "Caballo"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># de otra manera</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>,]<span class="sc">$</span>Animal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Perro"   "Caballo"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Devuelve los animales de la consulta</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(df[df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>, <span class="st">"Animal"</span>], <span class="at">collapse=</span><span class="st">' - '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Perro - Caballo"</code></pre>
+</div>
+</div>
+<p>También podemos utilizar la función which() por dos motivos: * Tiene en cuenta los NA * Es ligeramente más rápido</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># esto me dice en cual hay true, en el 1 y el 4</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Maneja datos más rapidamente</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">which</span>(df<span class="sc">$</span>Peso<span class="sc">&gt;</span><span class="dv">20</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Animal Cantidad Peso
+1   Perro       10   30
+4 Caballo        1  500</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Animal Cantidad Peso
+1   Perro       10   30
+4 Caballo        1  500</code></pre>
+</div>
+</div>
+<section id="ejemplo-actividad-deportiva" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-actividad-deportiva">Ejemplo: Actividad deportiva</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>activities<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'data/activities_strava.csv'</span>, <span class="at">stringsAsFactor=</span>T)</span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Activity.ID            Activity.Date  Activity.Name Activity.Type
+1  2583296920  Aug 1, 2019, 3:51:15 PM Afternoon Ride          Ride
+2  2583296929  Aug 2, 2019, 5:53:50 AM   Morning Ride          Ride
+3  2584111125  Aug 2, 2019, 1:15:49 PM Afternoon Ride          Ride
+4  2613027582 Aug 12, 2019, 3:58:59 PM Afternoon Ride          Ride
+5  2631611632 Aug 19, 2019, 5:24:35 AM   Morning Ride          Ride
+6  2632473031 Aug 19, 2019, 1:29:48 PM Afternoon Ride          Ride
+  Activity.Description Elapsed.Time Distance Relative.Effort Commute
+1                   NA        50436     8.14              NA   false
+2                   NA         1745     7.96              NA   false
+3                   NA          944     6.97              NA   false
+4                   NA         4170    10.52              NA   false
+5                   NA         1744     7.62              NA    true
+6                   NA         1046     7.62              NA    true
+  Activity.Gear                  Filename Athlete.Weight Bike.Weight
+1            NA activities/2583296920.gpx              0          NA
+2            NA activities/2583296929.gpx              0          NA
+3            NA activities/2584111125.gpx              0          NA
+4            NA activities/2613027582.gpx              0          NA
+5            NA activities/2631611632.gpx              0          NA
+6            NA activities/2632473031.gpx              0          NA
+  Elapsed.Time.1 Moving.Time Distance.1 Max.Speed Average.Speed Elevation.Gain
+1          50436       38641     8143.7      14.2            NA       29.82933
+2           1745        1682     7960.3      13.8            NA      128.79434
+3            944         944     6969.6      14.9            NA       17.21061
+4           4170        3003    10528.8      11.8            NA       62.29892
+5           1744        1611     7628.7      12.0            NA      128.79936
+6           1046        1038     7620.3      13.9            NA       30.42585
+  Elevation.Loss Elevation.Low Elevation.High Max.Grade Average.Grade
+1             NA         605.7          704.5      21.7   -1.03392804
+2             NA         584.3          704.5      13.0    1.18462873
+3             NA         584.3          704.5      10.5   -1.59837008
+4             NA         765.5          794.6       7.2   -0.02944305
+5             NA         584.3          704.5      12.9    1.33181274
+6             NA         584.3          704.5      10.1   -1.30965972
+  Average.Positive.Grade Average.Negative.Grade Max.Cadence Average.Cadence
+1                     NA                     NA          NA              NA
+2                     NA                     NA          NA              NA
+3                     NA                     NA          NA              NA
+4                     NA                     NA          NA              NA
+5                     NA                     NA          NA              NA
+6                     NA                     NA          NA              NA
+  Max.Heart.Rate Average.Heart.Rate Max.Watts Average.Watts Calories
+1             NA                 NA        NA            NA       NA
+2             NA                 NA        NA            NA       NA
+3             NA                 NA        NA            NA       NA
+4             NA                 NA        NA            NA       NA
+5             NA                 NA        NA            NA       NA
+6             NA                 NA        NA            NA       NA
+  Max.Temperature Average.Temperature Relative.Effort.1 Total.Work
+1              NA                  NA                NA         NA
+2              NA                  NA                NA         NA
+3              NA                  NA                NA         NA
+4              NA                  NA                NA         NA
+5              NA                  NA                NA         NA
+6              NA                  NA                NA         NA
+  Number.of.Runs Uphill.Time Downhill.Time Other.Time Perceived.Exertion
+1             NA          NA            NA         NA                 NA
+2             NA          NA            NA         NA                 NA
+3             NA          NA            NA         NA                 NA
+4             NA          NA            NA         NA                 NA
+5             NA          NA            NA         NA                 NA
+6             NA          NA            NA         NA                 NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.type
+1                                                                                       NA
+2                                                                                       NA
+3                                                                                       NA
+4                                                                                       NA
+5                                                                                       NA
+6                                                                                       NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.start_time
+1                                                                                             NA
+2                                                                                             NA
+3                                                                                             NA
+4                                                                                             NA
+5                                                                                             NA
+6                                                                                             NA
+  Weighted.Average.Power Power.Count Prefer.Perceived.Exertion
+1                     NA          NA                        NA
+2                     NA          NA                        NA
+3                     NA          NA                        NA
+4                     NA          NA                        NA
+5                     NA          NA                        NA
+6                     NA          NA                        NA
+  Perceived.Relative.Effort Commute.1 Total.Weight.Lifted From.Upload
+1                        NA        NA                  NA          NA
+2                        NA        NA                  NA          NA
+3                        NA        NA                  NA          NA
+4                        NA        NA                  NA          NA
+5                        NA        NA                  NA          NA
+6                        NA        NA                  NA          NA
+  Grade.Adjusted.Distance Weather.Observation.Time Weather.Condition
+1                      NA                       NA                NA
+2                      NA                       NA                NA
+3                      NA                       NA                NA
+4                      NA                       NA                NA
+5                      NA                       NA                NA
+6                      NA                       NA                NA
+  Weather.Temperature Apparent.Temperature Dewpoint Humidity Weather.Pressure
+1                  NA                   NA       NA       NA               NA
+2                  NA                   NA       NA       NA               NA
+3                  NA                   NA       NA       NA               NA
+4                  NA                   NA       NA       NA               NA
+5                  NA                   NA       NA       NA               NA
+6                  NA                   NA       NA       NA               NA
+  Wind.Speed Wind.Gust Wind.Bearing Precipitation.Intensity Sunrise.Time
+1         NA        NA           NA                      NA           NA
+2         NA        NA           NA                      NA           NA
+3         NA        NA           NA                      NA           NA
+4         NA        NA           NA                      NA           NA
+5         NA        NA           NA                      NA           NA
+6         NA        NA           NA                      NA           NA
+  Sunset.Time Moon.Phase Bike Gear Precipitation.Probability Precipitation.Type
+1          NA         NA   NA   NA                        NA                 NA
+2          NA         NA   NA   NA                        NA                 NA
+3          NA         NA   NA   NA                        NA                 NA
+4          NA         NA   NA   NA                        NA                 NA
+5          NA         NA   NA   NA                        NA                 NA
+6          NA         NA   NA   NA                        NA                 NA
+  Cloud.Cover Weather.Visibility UV.Index Weather.Ozone
+1          NA                 NA       NA            NA
+2          NA                 NA       NA            NA
+3          NA                 NA       NA            NA
+4          NA                 NA       NA            NA
+5          NA                 NA       NA            NA
+6          NA                 NA       NA            NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.jump_count
+1                                                                                             NA
+2                                                                                             NA
+3                                                                                             NA
+4                                                                                             NA
+5                                                                                             NA
+6                                                                                             NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.total_grit
+1                                                                                             NA
+2                                                                                             NA
+3                                                                                             NA
+4                                                                                             NA
+5                                                                                             NA
+6                                                                                             NA
+  translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.avg_flow
+1                                                                                           NA
+2                                                                                           NA
+3                                                                                           NA
+4                                                                                           NA
+5                                                                                           NA
+6                                                                                           NA</code></pre>
+</div>
+</div>
+<p>para saber el tamaño del fichero</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">object.size</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>68776 bytes</code></pre>
+</div>
+</div>
+<p>para saber la cantidad de filas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 95</code></pre>
+</div>
+</div>
+<p>podemos ver su estructura</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   95 obs. of  77 variables:
+ $ Activity.ID                                                                                   : num  2.58e+09 2.58e+09 2.58e+09 2.61e+09 2.63e+09 ...
+ $ Activity.Date                                                                                 : Factor w/ 95 levels "Aug 1, 2019, 3:51:15 PM",..: 1 6 5 2 4 3 7 9 8 11 ...
+ $ Activity.Name                                                                                 : Factor w/ 8 levels "Afternoon Hike",..: 2 6 2 2 6 2 2 6 2 6 ...
+ $ Activity.Type                                                                                 : Factor w/ 4 levels "Hike","Ride",..: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Activity.Description                                                                          : logi  NA NA NA NA NA NA ...
+ $ Elapsed.Time                                                                                  : int  50436 1745 944 4170 1744 1046 508 1825 1198 2365 ...
+ $ Distance                                                                                      : num  8.14 7.96 6.97 10.52 7.62 ...
+ $ Relative.Effort                                                                               : logi  NA NA NA NA NA NA ...
+ $ Commute                                                                                       : Factor w/ 2 levels "false","true": 1 1 1 1 2 2 1 2 2 1 ...
+ $ Activity.Gear                                                                                 : logi  NA NA NA NA NA NA ...
+ $ Filename                                                                                      : Factor w/ 95 levels "activities/2583296920.gpx",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Athlete.Weight                                                                                : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ Bike.Weight                                                                                   : logi  NA NA NA NA NA NA ...
+ $ Elapsed.Time.1                                                                                : num  50436 1745 944 4170 1744 ...
+ $ Moving.Time                                                                                   : num  38641 1682 944 3003 1611 ...
+ $ Distance.1                                                                                    : num  8144 7960 6970 10529 7629 ...
+ $ Max.Speed                                                                                     : num  14.2 13.8 14.9 11.8 12 ...
+ $ Average.Speed                                                                                 : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Elevation.Gain                                                                                : num  29.8 128.8 17.2 62.3 128.8 ...
+ $ Elevation.Loss                                                                                : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Elevation.Low                                                                                 : num  606 584 584 766 584 ...
+ $ Elevation.High                                                                                : num  704 704 704 795 704 ...
+ $ Max.Grade                                                                                     : num  21.7 13 10.5 7.2 12.9 ...
+ $ Average.Grade                                                                                 : num  -1.0339 1.1846 -1.5984 -0.0294 1.3318 ...
+ $ Average.Positive.Grade                                                                        : logi  NA NA NA NA NA NA ...
+ $ Average.Negative.Grade                                                                        : logi  NA NA NA NA NA NA ...
+ $ Max.Cadence                                                                                   : logi  NA NA NA NA NA NA ...
+ $ Average.Cadence                                                                               : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Max.Heart.Rate                                                                                : logi  NA NA NA NA NA NA ...
+ $ Average.Heart.Rate                                                                            : logi  NA NA NA NA NA NA ...
+ $ Max.Watts                                                                                     : logi  NA NA NA NA NA NA ...
+ $ Average.Watts                                                                                 : logi  NA NA NA NA NA NA ...
+ $ Calories                                                                                      : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Max.Temperature                                                                               : logi  NA NA NA NA NA NA ...
+ $ Average.Temperature                                                                           : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Relative.Effort.1                                                                             : logi  NA NA NA NA NA NA ...
+ $ Total.Work                                                                                    : logi  NA NA NA NA NA NA ...
+ $ Number.of.Runs                                                                                : logi  NA NA NA NA NA NA ...
+ $ Uphill.Time                                                                                   : logi  NA NA NA NA NA NA ...
+ $ Downhill.Time                                                                                 : logi  NA NA NA NA NA NA ...
+ $ Other.Time                                                                                    : logi  NA NA NA NA NA NA ...
+ $ Perceived.Exertion                                                                            : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.type      : logi  NA NA NA NA NA NA ...
+ $ translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.start_time: logi  NA NA NA NA NA NA ...
+ $ Weighted.Average.Power                                                                        : logi  NA NA NA NA NA NA ...
+ $ Power.Count                                                                                   : logi  NA NA NA NA NA NA ...
+ $ Prefer.Perceived.Exertion                                                                     : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Perceived.Relative.Effort                                                                     : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Commute.1                                                                                     : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Total.Weight.Lifted                                                                           : logi  NA NA NA NA NA NA ...
+ $ From.Upload                                                                                   : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Grade.Adjusted.Distance                                                                       : logi  NA NA NA NA NA NA ...
+ $ Weather.Observation.Time                                                                      : logi  NA NA NA NA NA NA ...
+ $ Weather.Condition                                                                             : logi  NA NA NA NA NA NA ...
+ $ Weather.Temperature                                                                           : logi  NA NA NA NA NA NA ...
+ $ Apparent.Temperature                                                                          : logi  NA NA NA NA NA NA ...
+ $ Dewpoint                                                                                      : logi  NA NA NA NA NA NA ...
+ $ Humidity                                                                                      : logi  NA NA NA NA NA NA ...
+ $ Weather.Pressure                                                                              : logi  NA NA NA NA NA NA ...
+ $ Wind.Speed                                                                                    : logi  NA NA NA NA NA NA ...
+ $ Wind.Gust                                                                                     : logi  NA NA NA NA NA NA ...
+ $ Wind.Bearing                                                                                  : logi  NA NA NA NA NA NA ...
+ $ Precipitation.Intensity                                                                       : logi  NA NA NA NA NA NA ...
+ $ Sunrise.Time                                                                                  : logi  NA NA NA NA NA NA ...
+ $ Sunset.Time                                                                                   : logi  NA NA NA NA NA NA ...
+ $ Moon.Phase                                                                                    : logi  NA NA NA NA NA NA ...
+ $ Bike                                                                                          : logi  NA NA NA NA NA NA ...
+ $ Gear                                                                                          : logi  NA NA NA NA NA NA ...
+ $ Precipitation.Probability                                                                     : logi  NA NA NA NA NA NA ...
+ $ Precipitation.Type                                                                            : logi  NA NA NA NA NA NA ...
+ $ Cloud.Cover                                                                                   : logi  NA NA NA NA NA NA ...
+ $ Weather.Visibility                                                                            : logi  NA NA NA NA NA NA ...
+ $ UV.Index                                                                                      : logi  NA NA NA NA NA NA ...
+ $ Weather.Ozone                                                                                 : logi  NA NA NA NA NA NA ...
+ $ translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.jump_count: logi  NA NA NA NA NA NA ...
+ $ translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.total_grit: logi  NA NA NA NA NA NA ...
+ $ translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.avg_flow  : logi  NA NA NA NA NA NA ...</code></pre>
+</div>
+</div>
+<p>ver las columnas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Activity.ID"                                                                                   
+ [2] "Activity.Date"                                                                                 
+ [3] "Activity.Name"                                                                                 
+ [4] "Activity.Type"                                                                                 
+ [5] "Activity.Description"                                                                          
+ [6] "Elapsed.Time"                                                                                  
+ [7] "Distance"                                                                                      
+ [8] "Relative.Effort"                                                                               
+ [9] "Commute"                                                                                       
+[10] "Activity.Gear"                                                                                 
+[11] "Filename"                                                                                      
+[12] "Athlete.Weight"                                                                                
+[13] "Bike.Weight"                                                                                   
+[14] "Elapsed.Time.1"                                                                                
+[15] "Moving.Time"                                                                                   
+[16] "Distance.1"                                                                                    
+[17] "Max.Speed"                                                                                     
+[18] "Average.Speed"                                                                                 
+[19] "Elevation.Gain"                                                                                
+[20] "Elevation.Loss"                                                                                
+[21] "Elevation.Low"                                                                                 
+[22] "Elevation.High"                                                                                
+[23] "Max.Grade"                                                                                     
+[24] "Average.Grade"                                                                                 
+[25] "Average.Positive.Grade"                                                                        
+[26] "Average.Negative.Grade"                                                                        
+[27] "Max.Cadence"                                                                                   
+[28] "Average.Cadence"                                                                               
+[29] "Max.Heart.Rate"                                                                                
+[30] "Average.Heart.Rate"                                                                            
+[31] "Max.Watts"                                                                                     
+[32] "Average.Watts"                                                                                 
+[33] "Calories"                                                                                      
+[34] "Max.Temperature"                                                                               
+[35] "Average.Temperature"                                                                           
+[36] "Relative.Effort.1"                                                                             
+[37] "Total.Work"                                                                                    
+[38] "Number.of.Runs"                                                                                
+[39] "Uphill.Time"                                                                                   
+[40] "Downhill.Time"                                                                                 
+[41] "Other.Time"                                                                                    
+[42] "Perceived.Exertion"                                                                            
+[43] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.type"      
+[44] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.start_time"
+[45] "Weighted.Average.Power"                                                                        
+[46] "Power.Count"                                                                                   
+[47] "Prefer.Perceived.Exertion"                                                                     
+[48] "Perceived.Relative.Effort"                                                                     
+[49] "Commute.1"                                                                                     
+[50] "Total.Weight.Lifted"                                                                           
+[51] "From.Upload"                                                                                   
+[52] "Grade.Adjusted.Distance"                                                                       
+[53] "Weather.Observation.Time"                                                                      
+[54] "Weather.Condition"                                                                             
+[55] "Weather.Temperature"                                                                           
+[56] "Apparent.Temperature"                                                                          
+[57] "Dewpoint"                                                                                      
+[58] "Humidity"                                                                                      
+[59] "Weather.Pressure"                                                                              
+[60] "Wind.Speed"                                                                                    
+[61] "Wind.Gust"                                                                                     
+[62] "Wind.Bearing"                                                                                  
+[63] "Precipitation.Intensity"                                                                       
+[64] "Sunrise.Time"                                                                                  
+[65] "Sunset.Time"                                                                                   
+[66] "Moon.Phase"                                                                                    
+[67] "Bike"                                                                                          
+[68] "Gear"                                                                                          
+[69] "Precipitation.Probability"                                                                     
+[70] "Precipitation.Type"                                                                            
+[71] "Cloud.Cover"                                                                                   
+[72] "Weather.Visibility"                                                                            
+[73] "UV.Index"                                                                                      
+[74] "Weather.Ozone"                                                                                 
+[75] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.jump_count"
+[76] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.total_grit"
+[77] "translation.missing..en.US.lib.export.portability_exporter.activities.horton_values.avg_flow"  </code></pre>
+</div>
+</div>
+<p>Nos podemos quedar con ciertas columnas de interés:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>activities <span class="ot">&lt;-</span> activities[,<span class="fu">c</span>(<span class="st">'Activity.Name'</span>, <span class="st">'Activity.Type'</span>, <span class="st">'Elapsed.Time'</span>, <span class="st">'Distance'</span>)]</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>activities<span class="sc">$</span>duracion_minutos <span class="ot">&lt;-</span> activities<span class="sc">$</span>Elapsed.Time<span class="sc">/</span><span class="dv">60</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co"># nos enseña 6 filas</span></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Activity.Name Activity.Type Elapsed.Time Distance duracion_minutos
+1 Afternoon Ride          Ride        50436     8.14        840.60000
+2   Morning Ride          Ride         1745     7.96         29.08333
+3 Afternoon Ride          Ride          944     6.97         15.73333
+4 Afternoon Ride          Ride         4170    10.52         69.50000
+5   Morning Ride          Ride         1744     7.62         29.06667
+6 Afternoon Ride          Ride         1046     7.62         17.43333</code></pre>
+</div>
+</div>
+<p>podemos ver su estructura</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   95 obs. of  5 variables:
+ $ Activity.Name   : Factor w/ 8 levels "Afternoon Hike",..: 2 6 2 2 6 2 2 6 2 6 ...
+ $ Activity.Type   : Factor w/ 4 levels "Hike","Ride",..: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Elapsed.Time    : int  50436 1745 944 4170 1744 1046 508 1825 1198 2365 ...
+ $ Distance        : num  8.14 7.96 6.97 10.52 7.62 ...
+ $ duracion_minutos: num  840.6 29.1 15.7 69.5 29.1 ...</code></pre>
+</div>
+</div>
+<p>ver los nombres de las columnas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Activity.Name"    "Activity.Type"    "Elapsed.Time"     "Distance"        
+[5] "duracion_minutos"</code></pre>
+</div>
+</div>
+<p>cambiar el nombre de las columnas</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(activities) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Nombre_actividad'</span>, <span class="st">'Tipo_actividad'</span>, <span class="st">'Duracion_segundos'</span>, <span class="st">'Distancia'</span>, <span class="st">'Duracion_minutos'</span>)</span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   95 obs. of  5 variables:
+ $ Nombre_actividad : Factor w/ 8 levels "Afternoon Hike",..: 2 6 2 2 6 2 2 6 2 6 ...
+ $ Tipo_actividad   : Factor w/ 4 levels "Hike","Ride",..: 2 2 2 2 2 2 2 2 2 2 ...
+ $ Duracion_segundos: int  50436 1745 944 4170 1744 1046 508 1825 1198 2365 ...
+ $ Distancia        : num  8.14 7.96 6.97 10.52 7.62 ...
+ $ Duracion_minutos : num  840.6 29.1 15.7 69.5 29.1 ...</code></pre>
+</div>
+</div>
+<p>el rownames(activities), no se utiliza, ni las librerias lo hacen, se puede dar nombre, pero no se usa</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(activities)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">'Actividad1'</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ver el nombre de la fila creado</span></span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Nombre_actividad Tipo_actividad Duracion_segundos Distancia
+Actividad1   Afternoon Ride           Ride             50436      8.14
+2              Morning Ride           Ride              1745      7.96
+3            Afternoon Ride           Ride               944      6.97
+4            Afternoon Ride           Ride              4170     10.52
+5              Morning Ride           Ride              1744      7.62
+6            Afternoon Ride           Ride              1046      7.62
+           Duracion_minutos
+Actividad1        840.60000
+2                  29.08333
+3                  15.73333
+4                  69.50000
+5                  29.06667
+6                  17.43333</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen de las actividades</span></span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(activities)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Nombre_actividad Tipo_actividad Duracion_segundos   Distancia     
+ Morning Ride  :45      Hike: 1        Min.   :  197     Min.   : 0.590  
+ Afternoon Ride:28      Ride:92        1st Qu.: 1230     1st Qu.: 7.715  
+ Evening Ride  :17      Run : 1        Median : 1745     Median : 7.820  
+ Afternoon Hike: 1      Walk: 1        Mean   : 2627     Mean   : 7.698  
+ Lunch Hike    : 1                     3rd Qu.: 2095     3rd Qu.: 8.000  
+ Morning Hike  : 1                     Max.   :50436     Max.   :15.200  
+ (Other)       : 2                                                       
+ Duracion_minutos 
+ Min.   :  3.283  
+ 1st Qu.: 20.508  
+ Median : 29.083  
+ Mean   : 43.776  
+ 3rd Qu.: 34.917  
+ Max.   :840.600  
+                  </code></pre>
+</div>
+</div>
+<p>cuando se carga el dataframe se coloca stringsAsFactor=T, esto es para que nos cree las categorías o variables categoricas (cadenas de texto como factor), lo anterior separa los valorces por estas categorías y no combina la informacion</p>
+<p>Podemos quedarnos solo con las actividades del tipo “Afternoon Ride” y con un tiempo inferior a 30 minutos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>afternoon_activity <span class="ot">&lt;-</span> activities[</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">which</span>(activities<span class="sc">$</span>Nombre_actividad<span class="sc">==</span><span class="st">'Afternoon Ride'</span> <span class="sc">&amp;</span></span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>    activities<span class="sc">$</span>Duracion_minutos<span class="sc">&lt;</span><span class="dv">30</span>),]</span>
+<span id="cb141-4"><a href="#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los 6 primeros</span></span>
+<span id="cb141-5"><a href="#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(afternoon_activity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nombre_actividad Tipo_actividad Duracion_segundos Distancia Duracion_minutos
+3    Afternoon Ride           Ride               944      6.97        15.733333
+6    Afternoon Ride           Ride              1046      7.62        17.433333
+7    Afternoon Ride           Ride               508      2.28         8.466667
+9    Afternoon Ride           Ride              1198      7.72        19.966667
+11   Afternoon Ride           Ride              1264      7.78        21.066667
+13   Afternoon Ride           Ride              1185      7.72        19.750000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sumary: nos da un resumen de todas las columnas, </span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="co"># si es factor, solo nos cuenta el numero de entradas de ese valor</span></span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="co"># si es una variable numerica, nos da ciertos estimadores estadisticos como la media, mediana y cuariles, el minimo, el maximo</span></span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="co"># de esta manera nos hacemos una idea de como se distribuyen los valores, a diferencia de str que nos dice las estructuras que tenemos</span></span>
+<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(afternoon_activity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Nombre_actividad Tipo_actividad Duracion_segundos   Distancia    
+ Afternoon Ride:26      Hike: 0        Min.   : 197      Min.   :0.590  
+ Afternoon Hike: 0      Ride:26        1st Qu.:1134      1st Qu.:7.620  
+ Evening Ride  : 0      Run : 0        Median :1212      Median :7.720  
+ Lunch Hike    : 0      Walk: 0        Mean   :1151      Mean   :7.206  
+ Morning Hike  : 0                     3rd Qu.:1263      3rd Qu.:7.780  
+ Morning Ride  : 0                     Max.   :1419      Max.   :8.030  
+ (Other)       : 0                                                      
+ Duracion_minutos
+ Min.   : 3.283  
+ 1st Qu.:18.904  
+ Median :20.200  
+ Mean   :19.188  
+ 3rd Qu.:21.046  
+ Max.   :23.650  
+                 </code></pre>
+</div>
+</div>
+<p>podemos obtener la actividad que ha durado mas de 15 minutos y menos de 30 minutos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>afternoon_activity_30_15 <span class="ot">&lt;-</span> activities[</span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">which</span>(activities<span class="sc">$</span>Nombre_actividad<span class="sc">==</span><span class="st">'Afternoon Ride'</span> <span class="sc">&amp;</span></span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>    activities<span class="sc">$</span>Duracion_minutos<span class="sc">&gt;</span><span class="dv">15</span> <span class="sc">&amp;</span> </span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a>      activities<span class="sc">$</span>Duracion_minutos<span class="sc">&lt;</span><span class="dv">30</span>),]</span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los 6 primeros</span></span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(afternoon_activity_30_15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nombre_actividad Tipo_actividad Duracion_segundos Distancia Duracion_minutos
+3    Afternoon Ride           Ride               944      6.97         15.73333
+6    Afternoon Ride           Ride              1046      7.62         17.43333
+9    Afternoon Ride           Ride              1198      7.72         19.96667
+11   Afternoon Ride           Ride              1264      7.78         21.06667
+13   Afternoon Ride           Ride              1185      7.72         19.75000
+15   Afternoon Ride           Ride              1321      8.03         22.01667</code></pre>
+</div>
+</div>
+<p>Podemos quedarnos solo con las actividades del tipo “Afternoon Ride” o “Morning Ride” y con un tiempo inferior a 30 minutos y superior a 15 minutos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>afternoon_activity_30_15 <span class="ot">&lt;-</span> activities[</span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">which</span>((activities<span class="sc">$</span>Nombre_actividad<span class="sc">==</span><span class="st">'Afternoon Ride'</span><span class="sc">|</span></span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>         activities<span class="sc">$</span>Nombre_actividad<span class="sc">==</span><span class="st">'Morning Ride'</span>)<span class="sc">&amp;</span></span>
+<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a>    activities<span class="sc">$</span>Duracion_minutos<span class="sc">&gt;</span><span class="dv">15</span> <span class="sc">&amp;</span> </span>
+<span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a>      activities<span class="sc">$</span>Duracion_minutos<span class="sc">&lt;</span><span class="dv">30</span>),]</span>
+<span id="cb147-6"><a href="#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los 6 primeros</span></span>
+<span id="cb147-7"><a href="#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(afternoon_activity_30_15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nombre_actividad Tipo_actividad Duracion_segundos Distancia Duracion_minutos
+2      Morning Ride           Ride              1745      7.96         29.08333
+3    Afternoon Ride           Ride               944      6.97         15.73333
+5      Morning Ride           Ride              1744      7.62         29.06667
+6    Afternoon Ride           Ride              1046      7.62         17.43333
+9    Afternoon Ride           Ride              1198      7.72         19.96667
+11   Afternoon Ride           Ride              1264      7.78         21.06667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(afternoon_activity_30_15)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Nombre_actividad Tipo_actividad Duracion_segundos   Distancia    
+ Afternoon Ride:24      Hike: 0        Min.   : 944      Min.   :6.930  
+ Morning Ride  : 4      Ride:28        1st Qu.:1190      1st Qu.:7.620  
+ Afternoon Hike: 0      Run : 0        Median :1225      Median :7.725  
+ Evening Ride  : 0      Walk: 0        Mean   :1292      Mean   :7.671  
+ Lunch Hike    : 0                     3rd Qu.:1331      3rd Qu.:7.782  
+ Morning Hike  : 0                     Max.   :1782      Max.   :8.030  
+ (Other)       : 0                                                      
+ Duracion_minutos
+ Min.   :15.73   
+ 1st Qu.:19.84   
+ Median :20.42   
+ Mean   :21.53   
+ 3rd Qu.:22.19   
+ Max.   :29.70   
+                 </code></pre>
+</div>
+</div>
+<p>Lo mismo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>afternoon_activity_30_15_1 <span class="ot">&lt;-</span> activities[</span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">which</span>(activities<span class="sc">$</span>Nombre_actividad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Afternoon Ride'</span>,<span class="st">'Morning Ride'</span>)<span class="sc">&amp;</span></span>
+<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a>    activities<span class="sc">$</span>Duracion_minutos<span class="sc">&gt;</span><span class="dv">15</span> <span class="sc">&amp;</span> </span>
+<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a>      activities<span class="sc">$</span>Duracion_minutos<span class="sc">&lt;</span><span class="dv">30</span>),]</span>
+<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los 6 primeros</span></span>
+<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(afternoon_activity_30_15_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Nombre_actividad Tipo_actividad Duracion_segundos Distancia Duracion_minutos
+2      Morning Ride           Ride              1745      7.96         29.08333
+3    Afternoon Ride           Ride               944      6.97         15.73333
+5      Morning Ride           Ride              1744      7.62         29.06667
+6    Afternoon Ride           Ride              1046      7.62         17.43333
+9    Afternoon Ride           Ride              1198      7.72         19.96667
+11   Afternoon Ride           Ride              1264      7.78         21.06667</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(afternoon_activity_30_15_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Nombre_actividad Tipo_actividad Duracion_segundos   Distancia    
+ Afternoon Ride:24      Hike: 0        Min.   : 944      Min.   :6.930  
+ Morning Ride  : 4      Ride:28        1st Qu.:1190      1st Qu.:7.620  
+ Afternoon Hike: 0      Run : 0        Median :1225      Median :7.725  
+ Evening Ride  : 0      Walk: 0        Mean   :1292      Mean   :7.671  
+ Lunch Hike    : 0                     3rd Qu.:1331      3rd Qu.:7.782  
+ Morning Hike  : 0                     Max.   :1782      Max.   :8.030  
+ (Other)       : 0                                                      
+ Duracion_minutos
+ Min.   :15.73   
+ 1st Qu.:19.84   
+ Median :20.42   
+ Mean   :21.53   
+ 3rd Qu.:22.19   
+ Max.   :29.70   
+                 </code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

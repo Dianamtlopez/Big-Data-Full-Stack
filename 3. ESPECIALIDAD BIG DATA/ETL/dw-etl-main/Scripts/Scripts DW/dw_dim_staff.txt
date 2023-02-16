@@ -1,0 +1,29 @@
+CREATE TABLE IF NOT EXISTS public.dim_staff
+(
+    sk_staff integer NOT NULL,
+    id_staff integer NOT NULL,
+    nom_staff character varying(90) COLLATE pg_catalog."default",
+    des_email character varying(50) COLLATE pg_catalog."default",
+    id_almacen integer,
+    id_manager integer,
+    txt_dir_staff character(50) COLLATE pg_catalog."default",
+    txt_telef_staff character(20) COLLATE pg_catalog."default",
+    txt_dir_almacen character(50) COLLATE pg_catalog."default",
+    txt_tel_almacen character(20) COLLATE pg_catalog."default",
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default",
+    CONSTRAINT dim_staff_pkey PRIMARY KEY (sk_staff)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.dim_staff
+    OWNER to postgres;
+-- Index: idx_dim_staff
+
+-- DROP INDEX public.idx_dim_staff;
+
+CREATE INDEX idx_dim_staff
+    ON public.dim_staff USING btree
+    (id_staff ASC NULLS LAST)
+    TABLESPACE pg_default;

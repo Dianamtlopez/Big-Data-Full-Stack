@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS public.o_payment
+(
+    payment_id integer NOT NULL,
+    customer_id integer NOT NULL,
+    staff_id integer NOT NULL,
+    rental_id integer NOT NULL,
+    amount numeric(5,2) NOT NULL,
+    payment_date timestamp without time zone NOT NULL,
+    CONSTRAINT payment_pkey PRIMARY KEY (payment_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_payment
+    OWNER to postgres;

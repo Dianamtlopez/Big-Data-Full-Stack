@@ -1,0 +1,42 @@
+CREATE TABLE IF NOT EXISTS public.agr_alquiler
+(
+    sk_fecha integer NOT NULL,
+    sk_cliente integer NOT NULL,
+    id_cliente integer NOT NULL,
+    sk_staff integer NOT NULL,
+    id_staff integer NOT NULL,
+    sk_almacen integer NOT NULL,
+    id_almacen integer NOT NULL,
+    id_categoria integer,
+    des_categoria character(25) COLLATE pg_catalog."default",
+    imp_pago_tot numeric(7,2),
+    num_pelis_tot integer,
+    num_pelis_pend integer,
+    imp_pago_retr numeric(7,2),
+    fec_ult_devol timestamp without time zone,
+    fec_ult_pago timestamp without time zone,
+    mca_cliente_vip character(1) COLLATE pg_catalog."default",
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.agr_alquiler
+    OWNER to postgres;
+-- Index: idx_agr_alq_cli
+
+-- DROP INDEX public.idx_agr_alq_cli;
+
+CREATE INDEX idx_agr_alq_cli
+    ON public.agr_alquiler USING btree
+    (sk_cliente ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: idx_agr_alq_fec
+
+-- DROP INDEX public.idx_agr_alq_fec;
+
+CREATE INDEX idx_agr_alq_fec
+    ON public.agr_alquiler USING btree
+    (sk_fecha ASC NULLS LAST)
+    TABLESPACE pg_default;

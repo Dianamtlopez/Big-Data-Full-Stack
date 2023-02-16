@@ -1,0 +1,68 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T2V4 - graficar en R
+
+Objetivo: diferenciar formas de graficar en r
+
+En este ejercicio vamos a:
+
+1.  graficar con base graphics
+2.  graficar con ggplot2
+
+datos de la primera parte
+```{r}
+year <- c('2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018')
+disney <- c(11, 13, 11, 8, 12, 11, 12, 8, 10)
+```
+# graficando con codigo
+```{r}
+plot(x = year,
+     y = disney)
+```
+editando la grafica
+```{r}
+plot(x = year,
+     y = disney,
+     main = 'disney',
+     xlab = '',
+     ylab = '',
+     col = 'cornflowerblue',
+     pch = 16,
+     panel.first = grid())
+```
+# Graficas con ggplot2
+para instalar ggplot2
+```{r}
+# install.packages("ggplot2")
+# library(ggplot2)
+```
+hacer dataframe
+```{r}
+peliculas <- data.frame(year, 
+                        disney)
+```
+# graficar utilizando ggplot
+```{r}
+ggplot(data = peliculas,
+       mapping = aes(x = year,
+                     y = disney)) + 
+       geom_point() + 
+       labs(title = 'Disney')
+```

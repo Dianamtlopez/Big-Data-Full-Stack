@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS public.o_film_actor
+(
+    actor_id integer NOT NULL,
+    film_id integer NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT film_actor_pkey PRIMARY KEY (actor_id, film_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_film_actor
+    OWNER to postgres;
+
+CREATE INDEX idx_fk_film_id
+    ON public.o_film_actor USING btree
+    (film_id ASC NULLS LAST)
+    TABLESPACE pg_default;

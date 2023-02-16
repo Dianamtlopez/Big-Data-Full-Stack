@@ -1,0 +1,32 @@
+CREAR DATAWAREHOUSE
+1. ABRIR PGADMIN Y CONECTARSE (password postgres)
+2. DATABASES > CREATE > DATABASE
+3. ASIGNAR NOMBRE DW_NETFLIX_FINAL, CON OWNER POSTGRES > SAVE
+4. ABRIR QUERY TOOL DENTRO DE DW_NETFLIX_FINAL
+5. COPIAR SCRIPT DE C:\Users\IEUser\Desktop\Scripts\create_dw.txt en la ventana y EJECUTAR
+
+FECHAS
+OBTENER FECHA ACTUAL: TalendDate.getCurrentDate()  
+AÑADIR UN DIA A LA FECHA: TalendDate.addDate(row1.Fecha,((Integer)globalMap.get("tLoop_2_CURRENT_VALUE")), "dd") 
+CONVERTIR A FORMATO NUMERICO YYYYMMDD: Mathematical.INT(TalendDate.formatDate("yyyyMMdd", datos.Fecha)) 
+OBTENER TRIMESTRE: (Mathematical.INT(TalendDate.formatDate("M", datos.Fecha)) +3-1)/3 
+OBTENER SEMANA: Mathematical.INT(TalendDate.formatDate("w", datos.Fecha))  
+OBTENER DIA SEMANA: TalendDate.getPartOfDate("DAY_OF_WEEK", datos.Fecha) 
+
+
+
+DIMENSIONES
+OBTENER MAXIMO REGISTRO DE TABLA: context.max_sk=((Integer)globalMap.get("tDBInput_1_NB_LINE"));
+CONTADOR PARA CLAVE SUBROGADA (: Numeric.sequence("sk", context.max_sk+1, 1) 
+
+
+
+TRABAJO CON CADENAS (STRINGS)
+CONCATENAR CADENAS: cadena1 + cadena2 + ....    Ejemplo: cli_total.first_name + " " + cli_total.last_name 
+CONVERSION DE STRING A BIGDECIMAL: new BigDecimal(campo)     Ejemplo: new BigDecimal(row1.release_year)  
+
+
+
+ESTRUCTURA CONDICIONAL IF-THEN-ELSE
+VERIFICAR EXISTENCIA NULO: campo == null ? 1 : 0   Ejemplo: alquiler.fec_devolucion == null ? 1 : 0 
+VARIAS CONDICIONES: Se concatenan con &&     Ejemplo: alquiler.id_cliente ==570 &&  alquiler.id_peli ==587

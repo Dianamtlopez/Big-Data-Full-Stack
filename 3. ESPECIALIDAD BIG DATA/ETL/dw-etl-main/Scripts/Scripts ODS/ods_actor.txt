@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS public.o_actor
+(
+    actor_id integer NOT NULL,
+    first_name character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT actor_pkey PRIMARY KEY (actor_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_actor
+    OWNER to postgres;
+
+CREATE INDEX idx_actor_last_name
+    ON public.o_actor USING btree
+    (last_name COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

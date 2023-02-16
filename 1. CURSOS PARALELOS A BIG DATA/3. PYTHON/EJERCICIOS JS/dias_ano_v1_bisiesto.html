@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+
+
+<script>
+//LISTA
+meses_ano = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+//FUNCION
+function es_bisiesto(year){
+  if (year % 4 != 0){
+//if not year % 4 == 0:
+    return false
+  }
+    
+  if (year % 100 == 0 && year % 400 != 0){
+    return false  
+  }
+        
+  return true    
+}
+    
+
+
+//INTRODUCIR DATOS
+dia = parseInt(prompt("Ingrese el día: "),10)
+mes = prompt("Ingrese el mes: ")
+anio = parseInt(prompt("Ingrese el año: "),10)
+
+//COMPROBAR BISIESTO
+//if (es_bisiesto(anio) == True)
+if (es_bisiesto(anio)){
+  meses_ano[1] = 29 
+}
+
+//CONTAR LOS DÍAS
+contador_dia = 0
+contador_mes = 0
+
+while(contador_mes < mes-1){
+  contador_dia = (contador_dia + meses_ano[contador_mes])
+  contador_mes = (contador_mes + 1)
+}
+    
+contador_dia = contador_dia + dia
+
+//IMPRIMIR DATOS
+alert("A los "+dia+" días, del mes "+mes+" hay: "+contador_dia+" días transcurridos")
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>

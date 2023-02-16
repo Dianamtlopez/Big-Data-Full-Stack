@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS public.o_customer
+(
+    customer_id integer NOT NULL,
+    store_id integer NOT NULL,
+    first_name character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying(45) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(50) COLLATE pg_catalog."default",
+    address_id integer NOT NULL,
+    activebool boolean NOT NULL DEFAULT true,
+    create_date date NOT NULL DEFAULT ('now'::text)::date,
+    last_update timestamp without time zone DEFAULT now(),
+    active integer,
+    CONSTRAINT customer_pkey PRIMARY KEY (customer_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_customer
+    OWNER to postgres;
+
+
+CREATE INDEX idx_last_name
+    ON public.o_customer USING btree
+    (last_name COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS public.dim_tiempo
+(
+    sk_fecha integer NOT NULL,
+    id_fecha timestamp without time zone,
+    num_anho integer,
+    num_trimestre integer,
+    num_semana integer,
+    num_dia_semana integer,
+    des_trimestre character(20) COLLATE pg_catalog."default",
+    des_dia_semana character(20) COLLATE pg_catalog."default",
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default",
+    CONSTRAINT dim_fecha_pkey PRIMARY KEY (sk_fecha)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.dim_tiempo
+    OWNER to postgres;
+-- Index: idx_dim_fecha
+
+-- DROP INDEX public.idx_dim_fecha;
+
+CREATE INDEX idx_dim_fecha
+    ON public.dim_tiempo USING btree
+    (id_fecha ASC NULLS LAST)
+    TABLESPACE pg_default;

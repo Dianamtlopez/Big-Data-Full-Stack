@@ -1,0 +1,91 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T3V2 - ARBOLES DE DESICIÓN PARA CLASIFICACION EN R
+
+paquete de datos
+```{r}
+#install.packages('titanic')
+```
+cargar librarias de analisis
+```{r}
+library(tidyverse)
+```
+cargar librerias de datos
+```{r}
+library(titanic)
+```
+cargar datos
+```{r}
+data ("titanic_train")
+```
+visualizar datos
+```{r}
+head(titanic_train)
+```
+cargar librerias para clasificacion
+
+hace los calculos
+```{r}
+#install.packages('rpart')
+library(rpart)
+```
+dar forma a la gráfica
+```{r}
+#install.packages('rattle')
+library(rattle)
+```
+dar forma a la grafica
+```{r}
+#install.packages('rpart.plot')
+library(rpart.plot)
+```
+modelando con arboles de decision
+```{r}
+arbol <- rpart(
+  # Modelo que queremos entrenar
+  formula = Survived ~ Sex + Age,
+  # Datos donde tiene que buscar la información
+  data = titanic_train,
+  # Para que prediga sobre la clase
+  method = 'class')
+```
+graficar el arbol
+```{r}
+fancyRpartPlot(arbol)
+```
+prediciendo con el arbol
+```{r}
+# Predecir sobre los datos con los que se hizo el modelo
+# funcion para predecir o clasificar predict(arbol, type = 'class') para calcular el 0 o 1 sobre todos los datos
+pred_arbol <- predict(arbol, type = 'class')
+```
+crear dataframe con la prediccion
+```{r}
+# combina la estructura de datos por columna, que tenga la misma cantidad de filas, como argumento se coloca la data original, junto con pred_arbol que es la variable con la funcion de predicción o clasificacion  
+titanic_pred <- cbind(titanic_train)
+```
+¿un pasajero masculino de 4 años de edad sobreviviría?
+```{r}
+predict(object = arbol,
+        newdata = data_frame(Age = 4,
+                             Sex = 'male'),
+        # Calcular el 1 o el 0
+        type = 'class')
+```

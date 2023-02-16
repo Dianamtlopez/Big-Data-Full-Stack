@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS public.o_rental
+(
+    rental_id integer NOT NULL,
+    rental_date timestamp without time zone NOT NULL,
+    inventory_id integer NOT NULL,
+    customer_id integer NOT NULL,
+    return_date timestamp without time zone,
+    staff_id integer NOT NULL,
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    CONSTRAINT rental_pkey PRIMARY KEY (rental_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_rental
+    OWNER to postgres;
+
+CREATE UNIQUE INDEX idx_unq_rental_rental_date_inventory_id_customer_id
+    ON public.o_rental USING btree
+    (rental_date ASC NULLS LAST, inventory_id ASC NULLS LAST, customer_id ASC NULLS LAST)
+    TABLESPACE pg_default;

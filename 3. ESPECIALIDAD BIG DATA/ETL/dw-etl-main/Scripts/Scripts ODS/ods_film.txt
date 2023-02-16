@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS public.o_film
+(
+    film_id integer NOT NULL,
+    title character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    description text COLLATE pg_catalog."default",
+    release_year numeric(4),
+    language_id integer NOT NULL,
+    rental_duration integer NOT NULL DEFAULT 3,
+    rental_rate numeric(4,2) NOT NULL DEFAULT 4.99,
+    length integer,
+    replacement_cost numeric(5,2) NOT NULL DEFAULT 19.99,
+    rating character varying(20) COLLATE pg_catalog."default",
+    last_update timestamp without time zone NOT NULL DEFAULT now(),
+    special_features text[] COLLATE pg_catalog."default",
+	CONSTRAINT film_pkey PRIMARY KEY (film_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.o_film
+    OWNER to postgres;
+
+
+CREATE INDEX idx_title
+    ON public.o_film USING btree
+    (title COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

@@ -1,0 +1,95 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T3V2 - MODELOS
+
+Cargando paquete para analizar datos
+
+```{r}
+library(tidyverse)
+```
+
+Cargando datos a Entorno
+
+```{r}
+data("Orange")
+```
+
+Mostrando datos de entorno
+
+```{r}
+head(Orange)
+```
+
+# Problema/pregunta
+
+Cuanto medirá la circunferencia en promedio de un árbol de naránjas a los 800 días de plantarlo
+
+```{r}
+# 1 Grafica
+Orange %>% 
+  # en x = los días y en y = la circunferencia
+  ggplot(aes(x = age,
+             y = circumference)) + 
+  geom_point() +
+  # esto nos muestra que a medida que pasan los días, crece el tamaño de los árboles
+  # lo que se busca con la regrecion lineal es trazar una recta que pase por la mitad de los puntos, de tal forma que para el día 800 encontrar cual va a ser el valor 
+              # es la b = al intercepto, cuando a = 1 o 0.1 b = y cuando a = 0.1 b = 10
+  geom_abline(intercept = 10,
+              # es la a = a la pendiente, ejemplos 1, 0.5 y 0.1
+              slope = 0.1,
+              col = 'blue')
+```
+
+Mejor ajuste de regresión lineal simple, lm() encuentra el mejor valor para la pendiente y el intercepto
+
+```{r}
+# la formula seria circumference con respecto a age
+lm(circumference ~ age, data = Orange)
+```
+
+```{r}
+# 1 Grafica
+Orange %>% 
+  # en x = los días y en y = la circunferencia
+  ggplot(aes(x = age,
+             y = circumference)) + 
+  geom_point() +
+  # esto nos muestra que a medida que pasan los días, crece el tamaño de los árboles
+  # lo que se busca con la regrecion lineal es trazar una recta que pase por la mitad de los puntos, de tal forma que para el día 800 encontrar cual va a ser el valor 
+              # es la b = al intercepto, cuando a = 1 o 0.1 b = y cuando a = 0.1 b = 10
+  geom_abline(intercept = 17.3997,
+              # es la a = a la pendiente, ejemplos 1, 0.5 y 0.1
+              slope = 0.1068,
+              col = 'blue') +
+  # para responder la pregunta, debemos trazar una línea vertical en el 800
+  geom_vline(xintercept = 800,
+             col = 'red')
+```
+
+# Valor exacto:
+
+Cuanto medirá la circunferencia en promedio de un árbol de naránjas a los 800 días de plantarlo
+
+```{r}
+dias <- 800
+# medida = a * dias + b
+medida <- 0.1068 * 800 + 17.3997
+medida
+```

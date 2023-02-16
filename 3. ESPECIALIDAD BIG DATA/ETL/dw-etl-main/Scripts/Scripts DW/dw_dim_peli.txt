@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS public.dim_peli
+(
+    sk_peli integer NOT NULL,
+    id_peli integer NOT NULL,
+    txt_titulo character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    txt_description text COLLATE pg_catalog."default",
+    num_anho numeric(4,0),
+    id_idioma integer NOT NULL,
+    num_duracion_alq integer NOT NULL DEFAULT 3,
+    imp_alquiler numeric(4,2) NOT NULL DEFAULT 4.99,
+    num_duracion integer,
+    des_rating character varying(20) COLLATE pg_catalog."default",
+    id_categoria integer,
+    des_categoria character(25) COLLATE pg_catalog."default",
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default",
+    CONSTRAINT dim_peli_pkey PRIMARY KEY (sk_peli)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.dim_peli
+    OWNER to postgres;
+-- Index: idx_dim_peli
+
+-- DROP INDEX public.idx_dim_peli;
+
+CREATE INDEX idx_dim_peli
+    ON public.dim_peli USING btree
+    (id_peli ASC NULLS LAST)
+    TABLESPACE pg_default;

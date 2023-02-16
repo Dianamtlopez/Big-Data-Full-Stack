@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS public.dim_actor
+(
+    sk_actor integer NOT NULL,
+    id_actor integer NOT NULL,
+    nom_actor character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default",
+    CONSTRAINT dim_actor_pkey PRIMARY KEY (sk_actor)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.dim_actor
+    OWNER to postgres;
+-- Index: idx_dim_actor
+
+-- DROP INDEX public.idx_dim_actor;
+
+CREATE INDEX idx_dim_actor
+    ON public.dim_actor USING btree
+    (id_actor ASC NULLS LAST)
+    TABLESPACE pg_default;

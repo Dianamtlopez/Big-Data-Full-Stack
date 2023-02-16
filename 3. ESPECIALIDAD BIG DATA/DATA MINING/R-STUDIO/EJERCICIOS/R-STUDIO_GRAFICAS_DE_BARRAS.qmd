@@ -1,0 +1,94 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T2V5 - graficas de barras en R
+ 
+Objetivo: hacer graficas de barras en r
+
+En este ejercicio vamos a:
+
+1. gráficas de barras con base graphics
+2. gráficas de barras con ggplot2
+ 
+cargando los datos
+```{r}
+# Crea un dataframe con los datos que podemos mirar en el entorno de variable o en la consola
+data(mtcars)
+```
+viendo los datos
+```{r}
+head(mtcars)
+```
+generando tabla agrupada
+```{r}
+# La función, debe obtener como argumento una tabla donde esté la variable categórica y las alturas
+# debemos agrupar los datos por cilindros de la siguiente manera
+table(mtcars$cyl)
+```
+grafica de barras basica
+```{r}
+# obtenemos la primera gráfica de barras
+barplot(table(mtcars$cyl))
+```
+editando grafica de barras
+```{r}
+# ponemos las barras horizontales con la opcion horiz = TRUE
+barplot(table(mtcars$cyl),
+              horiz = 'TRUE', # barras horizontales
+              col = 'green', # cambio de color
+              border = 'red', # borde del gráfico
+              main = 'gráfica de barras', # titulo
+              sub = 'subtitulo', # subtitulo
+              xlab = 'cilindros', # texto acompaña eje x
+              ylab = 'cantidad') # texto acompaña eje y
+```
+cargar ggplot2
+```{r}
+# install.packages("ggplot2")
+library(ggplot2)
+```
+grafica de barras
+```{r}
+# solo se incluye variable de cilindros como factor
+ggplot(data = mtcars, 
+       mapping = aes(x = factor(cyl))) + 
+  geom_bar() + # capa de geometrías
+  coord_flip() # voltea la gráfica
+```
+guardando grafica en variable
+```{r}
+p <- ggplot(data = mtcars,
+             mapping = aes(x = factor(cyl),
+                           
+                           fill = factor(gea-r)))
+
+```
+stacked bar chart
+```{r}
+p + geom_bar(position = 'stack', stat = 'count')
+```
+dogde bar chart
+```{r}
+p + geom_bar(position = 'dodge', stat = 'count')
+```
+stacked + percent barchart
+```{r}
+# para la gráfica del porcentaje, cambiamos position por fill
+p + geom_bar(position = 'fill', stat = 'count')
+```

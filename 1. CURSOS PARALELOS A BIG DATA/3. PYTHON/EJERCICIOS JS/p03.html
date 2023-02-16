@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+
+
+<script>
+//Quien Eres
+nombre = prompt("Como te llamas?: ")
+alert("Hola, "+ nombre)
+
+//Toma de datos
+edad = prompt("Ingrese su edad: ")
+anio_actual = prompt("Ingrese el año actual: ")
+cumplido = prompt("Has cumplido años ya (S/N)?: ")
+
+//Cálculos
+if (cumplido == "S"){
+  anio_nacimiento = anio_actual - edad
+}else if (cumplido == "N"){
+  anio_nacimiento = (anio_actual - edad - 1)  
+}
+
+//Presentacion de Resultados
+alert(nombre + ", Usted nacio en: " + anio_nacimiento)
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>

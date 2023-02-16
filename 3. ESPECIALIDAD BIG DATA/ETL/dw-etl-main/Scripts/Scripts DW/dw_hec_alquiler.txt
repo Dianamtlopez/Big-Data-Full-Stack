@@ -1,0 +1,50 @@
+CREATE TABLE IF NOT EXISTS public.hec_alquiler
+(
+    sk_fecha integer NOT NULL,
+    id_alquiler integer NOT NULL,
+    id_pago integer,
+    id_inventario integer,
+    sk_cliente integer NOT NULL,
+    id_cliente integer NOT NULL,
+    sk_staff integer NOT NULL,
+    id_staff integer NOT NULL,
+    sk_peli integer NOT NULL,
+    id_peli integer NOT NULL,
+    sk_almacen integer NOT NULL,
+    id_almacen integer NOT NULL,
+    fec_alquiler timestamp without time zone,
+    fec_devolucion timestamp without time zone,
+    fec_pago timestamp without time zone,
+    imp_pago numeric(7,2),
+    fec_actu timestamp without time zone,
+    cod_usr character(8) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.hec_alquiler
+    OWNER to postgres;
+-- Index: idx_hec_alq_cli
+
+-- DROP INDEX public.idx_hec_alq_cli;
+
+CREATE INDEX idx_hec_alq_cli
+    ON public.hec_alquiler USING btree
+    (sk_cliente ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: idx_hec_alq_fec
+
+-- DROP INDEX public.idx_hec_alq_fec;
+
+CREATE INDEX idx_hec_alq_fec
+    ON public.hec_alquiler USING btree
+    (sk_fecha ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: idx_hec_alq_peli
+
+-- DROP INDEX public.idx_hec_alq_peli;
+
+CREATE INDEX idx_hec_alq_peli
+    ON public.hec_alquiler USING btree
+    (sk_peli ASC NULLS LAST)
+    TABLESPACE pg_default;

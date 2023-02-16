@@ -1,0 +1,181 @@
+---
+format: html
+editor: visual
+---
+
+---
+jupyter:
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+-   LEMA: INTENTA, INSISTE Y RESISTE\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: R-STUDIO GRATIS\
+-   INSTRUCTOR: RAFA GONZALEZ GOUVEIA\
+-   ENTIDAD: youtube.com/@GonzalezGouveia
+
+# T3V2 - SERIES DE TIEMPO EN R
+
+código para ecobici en R
+```{r}
+# analizar datos, sirve para Importar, transformar, visualizar, modelar y comunicar
+library(tidyverse)
+# Especial para todo lo que tiene que ver con fecha en R, muy bueno para trabajar series de tiempo de forma conjunta
+#install.packages('libridate')
+library(lubridate)
+```
+# leer CSV
+```{r}
+file.choose()
+```
+copiamos la ruta en la variable raw_data y nos queda estilo dataframe
+```{r}
+raw_data <- read.csv("D:\\Users\\diana\\Downloads\\DATA MINING\\R-STUDIO\\PRACTICA\\2020-02.csv")
+```
+cargamos datos
+```{r}
+head(raw_data)
+```
+procesamiento de datos
+```{r}
+viajes_diarios <- raw_data %>% 
+  # Transformamos la variable raw_data, creando una variable que se llame fecha_hora
+  # organiza el formato de fecha, primero Fecha_Retiro formato dmy y posterior Hora_Retiro hms
+  mutate(fecha_hora = dmy_hms(paste(Fecha_Retiro, Hora_Retiro))) %>% 
+  # Filtrar para fecha_hora datos mayores al 24 de febrero
+  filter(fecha_hora >= as.Date('2020-02-24'),
+         fecha_hora <= as.Date('2020-02-27')) %>% 
+    group_by(horas = floor_date(fecha_hora, unit = 'hour')) %>% 
+    # n() Cuenta los registros por hora  
+    summarise(conteo = n())
+```
+rellenando ceros
+```{r}
+horas_completas <- data.frame(
+  # creo un dataframe con la variable horas, la creo con una secuencia que inivia con floor_date del minimo de los viajes diarios en las horas con la unidad en horas y termina en floor_date del maximo de los viajes diarios en las horas con unidad de hora 
+  horas = seq(
+    floor_date(min(viajes_diarios$horas), unit = 'hour'),
+    floor_date(max(viajes_diarios$horas), unit = 'hour'),
+    by = 'hour'
+))
+```
+left join para unir viajes con horas
+```{r}
+viajes_hora <- horas_completas %>% 
+  group_by(horas_redondeadas = floor_date(horas, unit = 'hour')) %>% 
+  # se unen los dataframes por las horas
+  left_join(viajes_diarios) %>% 
+  # para agregar los ceros, vamos a mutar la variable conteo, le agregamos la función ifelse, asigna una condicion a cumplir y asignar valores
+  mutate(conteo = ifelse(is.na(conteo), 0, conteo))
+  # lo anterior significa que si cuando hemos unido a traves de left join hay un na, agregue cero y de lo contrario agregue el valor
+```
+grafica de líneas inicial
+```{r}
+ggplot(data = viajes_diarios,
+       aes(x = horas,
+           y = conteo)) +
+  # agregamos una capa de geom_line
+  geom_line()
+```
+creando objeto ts para el modelo
+```{r}
+# metemos los conteos en una variable (conteo de series de tiempo)
+conteos_ts <- ts(viajes_hora$conteo,
+                 # asignamos un inicio, en este caso es 1
+                 start = 1,
+                 frequency = 24)
+```
+visualizar datos conteo_ts
+```{r}
+conteos_ts
+```
+hacer modelo ARIMA
+```{r}
+# uno de los mejores paquetes para hacer series de tiempo
+#install.packages('forecast')
+```
+cargar la libreria
+```{r}
+library(forecast)
+```
+ajuste del modelo
+```{r}
+# esta funcion lo que hace es calcular todos los parámetros de la arima
+ajuste <- auto.arima(y = conteos_ts)
+```
+resumen del ajuste
+```{r}
+summary(ajuste)
+```
+hacer las predicciones
+```{r}
+predicciones <- forecast(ajuste)
+```
+calcular el valor minimo de las predicciones
+```{r}
+# como es una lista colocamos lower
+min(predicciones[['lower']])
+```
+calculamos el valor maximo de las predicciones
+```{r}
+# como es una lista colocamos lower
+max(predicciones[['upper']])
+```
+grafica de las predicciones
+```{r}
+# autoplot viene en forcast, automáticamente calcula las barras de confianza y lo demás
+p_predict <- autoplot(predicciones)
+```
+ver la grafica
+```{r}
+# la linea azul es el valor promedio estimado que es cuanto deberia valer el conteo o cuantas bicicletas estan en circulacion para cierta hora del dia, captura o repite muy bien el patron de la antiguedad, la banda distorcionada, sería como un poco el error o la banda de confianza, para el ultimo día la banda es mas ancha, significa que misntras mas queramos predecir hacia el futuro, mas grande será el margen de error  
+p_predict
+```
+graficando toda la semana
+procesamiento de datos
+```{r}
+viajes_diarios <- raw_data %>% 
+  # Transformamos la variable raw_data, creando una variable que se llame fecha_hora
+  # organiza el formato de fecha, primero Fecha_Retiro formato dmy y posterior Hora_Retiro hms
+  mutate(fecha_hora = dmy_hms(paste(Fecha_Retiro, Hora_Retiro))) %>% 
+  # Filtrar para fecha_hora datos mayores al 24 de febrero
+  filter(fecha_hora >= as.Date('2020-02-24'),
+         fecha_hora <= as.Date('2020-02-29')) %>% 
+    group_by(horas = floor_date(fecha_hora, unit = 'hour')) %>% 
+    # n() Cuenta los registros por hora  
+    summarise(conteo = n())
+```
+rellenando ceros
+```{r}
+horas_completas <- data.frame(
+  # creo un dataframe con la variable horas, la creo con una secuencia que inivia con floor_date del minimo de los viajes diarios en las horas con la unidad en horas y termina en floor_date del maximo de los viajes diarios en las horas con unidad de hora 
+  horas = seq(
+    floor_date(min(viajes_diarios$horas), unit = 'hour'),
+    floor_date(max(viajes_diarios$horas), unit = 'hour'),
+    by = 'hour'
+))
+```
+left join para unir viajes con horas
+```{r}
+viajes_hora <- horas_completas %>% 
+  group_by(horas_redondeadas = floor_date(horas, unit = 'hour')) %>% 
+  # se unen los dataframes por las horas
+  left_join(viajes_diarios) %>% 
+  # para agregar los ceros, vamos a mutar la variable conteo, le agregamos la función ifelse, asigna una condicion a cumplir y asignar valores
+  mutate(conteo = ifelse(is.na(conteo), 0, conteo))
+  # lo anterior significa que si cuando hemos unido a traves de left join hay un na, agregue cero y de lo contrario agregue el valor
+```
+grafica de líneas inicial
+```{r}
+ggplot(data = viajes_diarios,
+       aes(x = horas,
+           y = conteo)) +
+  # agregamos una capa de geom_line
+  geom_line()+
+  ylim(-551.5396, 4103.783) +
+  labs(title = 'Realidad')
+# como al modelo noo había como explicarle lo ocurrido los viernes, no podia capturarlo y solo se basaba en lo que tenia, ya recalculando los datos con las predicciones, ahora si es capaz de mostrarlo
+```

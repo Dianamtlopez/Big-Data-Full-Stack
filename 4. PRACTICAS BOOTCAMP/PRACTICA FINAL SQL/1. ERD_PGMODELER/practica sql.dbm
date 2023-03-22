@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.4" use-changelog="false" author="Dianamtlopez" last-position="0,0" last-zoom="0.8" max-obj-count="8"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<role name="dianamtlopez"
+ inherit="true">
+	<comment><![CDATA[Rol creado para la presentación de la práctica de SQL]]></comment>
+</role>
+
+<database name="vehiculos_kc" is-template="false" allow-conns="true">
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[BD que almacena los vehiculos que pertenecen al parque automotor de Keepcodin, asi mismo almacenar todos los procesos realizados con sus vehiculos]]></comment>
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="practica_vehiculos" layers="0" rect-visible="true" fill-color="#e1e1e1">
+	<role name="dianamtlopez"/>
+</schema>
+
+<table name="fabricante_vehiculo" layers="0" alias="fab_vehi" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[Tabla creada para almacenar los diferentes vehiculos que la empresa puede adqquirir]]></comment>
+	<position x="18.5" y="25"/>
+	<column name="id_modelo" alias="id_modelo" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Columna que almacena la identificacion de cada vehiculo]]></comment>
+	</column>
+	<column name="modelo" alias="modelo" not-null="true">
+		<type name="varchar" length="25"/>
+		<comment><![CDATA[Columna que almacena el modelo del vehículo]]></comment>
+	</column>
+	<column name="marca" alias="marca" not-null="true">
+		<type name="varchar" length="15"/>
+		<comment><![CDATA[Columna que almacena la marca del vehículo]]></comment>
+	</column>
+	<column name="grupo_empresarial" alias="grup_emp" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Columna que almacena el grupo empresarial al que pertenece el vehículo]]></comment>
+	</column>
+	<constraint name="fabricante_vehiculo_pk" type="pk-constr" table="practica_vehiculos.fabricante_vehiculo">
+		<columns names="id_modelo" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="empresa_vehiculo" layers="0" alias="empresa_vehiculo" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<position x="609.193" y="26.975"/>
+	<column name="matricula" alias="matricula" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[Columna que almacena la matrícula del vehículo]]></comment>
+	</column>
+	<column name="color" alias="color" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[Columna que almacena el color del vehículo]]></comment>
+	</column>
+	<column name="fecha_compra" alias="fecha_compra" not-null="true">
+		<type name="date" length="0"/>
+		<comment><![CDATA[Columna que almacena la fecha de compra del vehículo]]></comment>
+	</column>
+	<constraint name="empresa_vehiculo_pk" type="pk-constr" table="practica_vehiculos.empresa_vehiculo">
+		<columns names="matricula" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_modelo" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="fabricante_vehiculo_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="fabricante_vehiculo_has_many_empresa_vehiculo" type="rel1n" layers="0" alias="fabricante_empresa"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#d5cff1"
+	 src-table="practica_vehiculos.fabricante_vehiculo"
+	 dst-table="practica_vehiculos.empresa_vehiculo"
+	 src-required="true" dst-required="false"/>
+
+<table name="poliza_empresa" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[Tabla que almacena las polizas que se adquieren para los vehiculos de Keepcoding]]></comment>
+	<position x="20.349" y="186.096"/>
+	<column name="codigo_poliza" alias="codigo_poliza" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[Columna que almacena el número de la póliza parra cada vehiculo]]></comment>
+	</column>
+	<column name="fecha_poliza" alias="fecha_poliza" not-null="true">
+		<type name="date" length="0"/>
+		<comment><![CDATA[Columna que almacena la fecha en la que se adquirió la póliza para cada vehículo de Keepcoding]]></comment>
+	</column>
+	<column name="kilometraje" alias="kilometraje" not-null="true">
+		<type name="float" length="0"/>
+		<comment><![CDATA[Columna que almacena el kilometraje que tiene el vehículo en el momento de adquirir la póliza]]></comment>
+	</column>
+	<column name="importe_poliza" alias="imp_poliza" not-null="true">
+		<type name="float" length="0"/>
+		<comment><![CDATA[Columna que almacena el valor de la póliza]]></comment>
+	</column>
+	<constraint name="poliza_empresa_pk" type="pk-constr" table="practica_vehiculos.poliza_empresa">
+		<columns names="codigo_poliza" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_aseguradora" index="1"/>
+		<object name="id_divisa" index="5"/>
+		<object name="matricula" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="aseguradora_fk" index="2"/>
+		<object name="divisa_fk" index="3"/>
+		<object name="empresa_vehiculo_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="empresa_vehiculo_has_many_poliza_empresa" type="rel1n" layers="0" alias="empresa_poliza"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#0a7277"
+	 src-table="practica_vehiculos.empresa_vehiculo"
+	 dst-table="practica_vehiculos.poliza_empresa"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-22.149" y="-20.7841"/>
+	</label>
+</relationship>
+
+<table name="empresa_revision" layers="0" alias="emp_revision" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[Tabla que almacena las revisiones tecnico mecánicas de los vehículos que pertenecen a Keepcoding ]]></comment>
+	<position x="609.682" y="271.79"/>
+	<column name="consecutivo" alias="consecutivo" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Columna que almacena el consecutivo de las revisiones tecnico mecánicas]]></comment>
+	</column>
+	<column name="fecha_revision" alias="fecha_revision" not-null="true">
+		<type name="date" length="0"/>
+		<comment><![CDATA[Columna que almacena la fecha en la cual se ha sacado la revision tecnico mecánica]]></comment>
+	</column>
+	<column name="kilometraje_revision" alias="kilome_revision" not-null="true">
+		<type name="float" length="0"/>
+		<comment><![CDATA[Columna que almacena el kilometraje que tiene el vehículo en el momento de la revision]]></comment>
+	</column>
+	<column name="importe_revision" alias="imp_revision" not-null="true">
+		<type name="float" length="0"/>
+		<comment><![CDATA[Columna que almacena el valor cancelado por la revisión tecnico mecánica]]></comment>
+	</column>
+	<constraint name="empresa_revision_pk" type="pk-constr" table="practica_vehiculos.empresa_revision">
+		<columns names="consecutivo" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_divisa" index="5"/>
+		<object name="id_revision" index="1"/>
+		<object name="matricula" index="3"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="divisa_fk" index="3"/>
+		<object name="empresa_vehiculo_fk" index="1"/>
+		<object name="revision_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="empresa_vehiculo_has_many_empresa_revision" type="rel1n" layers="0" alias="empresa_vehiculo_revision"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#2c143c"
+	 src-table="practica_vehiculos.empresa_vehiculo"
+	 dst-table="practica_vehiculos.empresa_revision"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-6.07699" y="-27.6755"/>
+	</label>
+</relationship>
+
+<table name="aseguradora" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[Tabla que almacena las diferentes aseguradoras que proporcionan polizas para los vehículos de Keepcoding ]]></comment>
+	<position x="23.5888" y="596.97"/>
+	<column name="id_aseguradora" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[Columna que almacena la identificacion de la aseguradora]]></comment>
+	</column>
+	<column name="nombre_aseguradora" alias="nomb_aseguradora" not-null="true">
+		<type name="varchar" length="70"/>
+		<comment><![CDATA[Coolumna que almacena los nombres de las aseguradoras qie proporcionan las pólizas]]></comment>
+	</column>
+	<constraint name="aseguradora_pk" type="pk-constr" table="practica_vehiculos.aseguradora">
+		<columns names="id_aseguradora" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="aseguradora_has_many_poliza_empresa" type="rel1n" layers="0" alias="aseguradora_poliza"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#5bcd10"
+	 src-table="practica_vehiculos.aseguradora"
+	 dst-table="practica_vehiculos.poliza_empresa"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="3.91458" y="10.5907"/>
+	</label>
+</relationship>
+
+<table name="divisa" layers="0" alias="divisa" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[Columna que almacena las divisas en las cuales se puede negociar]]></comment>
+	<position x="336.667" y="596.667"/>
+	<column name="id_divisa" alias="id_divisa" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Columna que almacena el id de la divisa en la cual se negocia ]]></comment>
+	</column>
+	<column name="nombre_divisa" alias="nomb_divisa" not-null="true">
+		<type name="varchar" length="25"/>
+		<comment><![CDATA[Columna que almacena el nombre de la divisa en la que se puede negociar]]></comment>
+	</column>
+	<column name="sigla" alias="sigla" not-null="true">
+		<type name="varchar" length="5"/>
+		<comment><![CDATA[Columna que almacena la sigla de la divisa en la cual se negocia]]></comment>
+	</column>
+	<constraint name="divisa_pk" type="pk-constr" table="practica_vehiculos.divisa">
+		<columns names="id_divisa" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="divisa_has_many_poliza_empresa" type="rel1n" layers="0" alias="divisa_poliza"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#eb0860"
+	 src-table="practica_vehiculos.divisa"
+	 dst-table="practica_vehiculos.poliza_empresa"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-35.5715" y="-49.2578"/>
+	</label>
+</relationship>
+
+<table name="revision" layers="0" alias="revision" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="practica_vehiculos"/>
+	<role name="dianamtlopez"/>
+	<comment><![CDATA[Tabla que almacena las descripciones de lass revisiones tecnico mecánicas de los vehiculos]]></comment>
+	<position x="644.833" y="597.833"/>
+	<column name="id_revision" alias="id_revision" not-null="true">
+		<type name="serial" length="0"/>
+		<comment><![CDATA[Columna que almacena el identificador de las revisiones]]></comment>
+	</column>
+	<column name="descripcion" alias="descripcion" not-null="true">
+		<type name="varchar" length="15"/>
+		<comment><![CDATA[Columna que almacena la descripción de las revisiones tecnico mecánicas]]></comment>
+	</column>
+	<constraint name="revision_pk" type="pk-constr" table="practica_vehiculos.revision">
+		<columns names="id_revision" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="revision_has_many_empresa_revision" type="rel1n" layers="0" alias="revision_empresa"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#94c4d4"
+	 src-table="practica_vehiculos.revision"
+	 dst-table="practica_vehiculos.empresa_revision"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="1.15318" y="-26.438"/>
+	</label>
+</relationship>
+
+<relationship name="divisa_has_many_empresa_revision" type="rel1n" layers="0" alias="divisa_empresa"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#17a12f"
+	 src-table="practica_vehiculos.divisa"
+	 dst-table="practica_vehiculos.empresa_revision"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-35.3691" y="-24.6046"/>
+	</label>
+</relationship>
+
+</dbmodel>

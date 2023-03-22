@@ -1,0 +1,237 @@
+---
+title: "practica_final"
+format: html
+editor: visual
+---
+
+-   PRACTICA FINAL\
+-   DESARROLLADA POR: DIANA MARÍA TORO LÓPEZ\
+-   CURSO: DATA-MINING\
+-   INSTRUCTOR: JOSÉ MARÍA GONZÁLEZ CALABOZO\
+-   ENTIDAD: KEEPCODING
+
+Vamos a utilizar el dataset de semillas que se encuentra aquí: https://archive.ics.uci.edu/ml/datasets/seeds#
+
+Primero vamos a descargarnos el dataset con el siguiente comando:
+
+```{r}
+library(tidyverse)
+df_seeds <- read.table('https://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt', col.names =c('area','perimetro','compacto','longitud','anchura','coeficient.asimetria','longitud.ranura','tipo'))
+```
+
+#### PREGUNTA 1
+
+¿Cuantas filas y cuantas columnas tiene el dataframe df_seeds?
+
+**Respuesta**:
+
+```{r}
+# Cantidad de filas = nrow(df_seeds)
+print(paste("El dataframe tiene", nrow(df_seeds), "Filas"))
+# Cantidad de columnas = ncol(df_seeds)
+print(paste("El dataframe tiene", ncol(df_seeds), "Columnas"))
+```
+
+#### PREGUNTA 2
+
+Vamos a convertir en factor la columna tipo. Vamos a reemplazar los números por su correspondiente etiqueta (label). La correspondencia entre el código y el tipo es:
+
+-   1 - Kama
+-   2 - Rosa
+-   3 - Canadian
+
+Convierte en factor la columna tipo, respetando las etiquetas:
+
+**Respuesta**:
+
+```{r}
+df_seeds$tipo <- factor(df_seeds$tipo,levels=c("1", "2", "3"),labels=c("Kama","Rosa","Canadian"))
+
+# sumary: nos da un resumen de todas las columnas. 
+# Si es factor, solo nos cuenta el numero de entradas de ese valor.
+# Si es una variable numerica, nos da ciertos estimadores estadisticos como la media, mediana y cuariles, el minimo, el maximo. 
+# De esta manera nos hacemos una idea de como se distribuyen los valores
+summary(df_seeds)
+```
+
+#### PREGUNTA 3
+
+¿Cual es la media del area de cada uno de los tipos?
+
+**Respuesta**
+
+```{r}
+# tengo el dataframe df_seeds, lo agrupo por cada tipo, con esto tenemos una salida por cada tipo, con summarize le digo que agrupe y lo deje en una sola salida, se crea la variable media_area con la media del area, redondeada a dos decimales
+# |> concatena funciones 
+df_seeds |> group_by(tipo) |> summarize(media_area=round(mean(area),2))
+
+```
+
+#### PREGUNTA 4
+
+¿Como se llama el siguiente tipo de gráfico?. ¿Qué representa la línea del centro de la caja?
+
+```{r}
+ggplot(data = df_seeds,
+       # Elementos estéticos
+       mapping = aes(x = tipo, 
+                     y = area)) + 
+  # para hacer el boxplot, agregamos una geometría con este mismo nombre
+  geom_boxplot()
+```
+
+**Respuesta**:
+
+-   ¿Como se llama el siguiente tipo de gráfico?: Gráfico o diagrama de cajas o boxplot.
+-   ¿Qué representa la línea del centro de la caja?: Esta línea representa la mediana, ésta diría hasta que punto de toda la columna o de toda la variable se acumula el 50% de mínimo a máximo, mas tecnicamente, esta línea sería Q2 que representa El 50% de las muestras y se encuentran por debajo del segundo cuartil
+
+![](IMG/boxplot.png)
+
+#### PREGUNTA 5
+
+¿Como pintarías un diagrama de puntos (o scatterplot) con ggplot con las siguientes características?
+
+-   En el eje X la variable compacto
+-   En el eje Y la variable area
+-   Cada tipo de semilla debería tener un color diferente
+
+**Respuesta**:
+
+```{r}
+ggplot(data = df_seeds,
+       # Elementos estéticos
+       mapping = aes(x = compacto,
+                     y = area,
+                     # relleno para pintar de color diferente las distintas especies
+                     color = tipo)) + 
+  # esta geometria me va a pintar los puntos diferenciando un color por cada tipo de semilla
+   geom_point()
+```
+
+#### PREGUNTA 6
+
+¿Qué hace la siguiente línea?:
+
+```{r}
+df_seeds |> mutate(is_kama = tipo=='Kama') -> df_seeds
+```
+
+**Respuesta**:
+
+Crea una nueva columna en el dataframe, o concatena con el operador \|\>, la columna se llama "is_kama", donde las especies que sean de tipo Kama, les va a colocar True, de lo contrario van a tener False
+
+#### PREGUNTA 7
+
+Vamos a dividir el conjunto de datos en test y training porque vamos a entrenar un modelo que me permita diferenciar si una semilla es de tipo Kama o no. ¿Por qué es aconsejable dividir el dataset en los grupos de train y test?
+
+```{r}
+# Este set.seed hace que a todos nos generen los mismos número aleatorios
+set.seed(123) 
+# me crea una serie de indices para training
+idx <- sample(1:nrow(df_seeds), 0.7*nrow(df_seeds))
+df_seeds_train <- df_seeds[idx,]
+df_seeds_test <- df_seeds[-idx,]
+```
+
+**Respuesta**:
+
+¿Por qué es aconsejable dividir el dataset en los grupos de train y test?
+
+Cuando creamos un modelo de Machine Learning es muy aconsejable dividir los datos en dos grupos, uno de training y otro de testing:
+
+-   Con training entrenamos el modelo: Se asignan entre el 70% y 80% de los datos que se utilizará para entrenar el modelo. Lo llamaremos datafrane de training.
+-   Con testing hacemos los test: Se asigna entre el 30% y 20% de los datos, lo utilizaremos para evaluar la calidad del modelo, estos son datos que no ha visto nuestro modelo y por tanto nos nuestra como de bien o mal predicirá con datos nuevos.
+
+Nota: Para evaluar como funciona un modelo, no se pueden usar muestras usadas para entrenar el modelo, ya que de esta manera los resultados son contaminados y no nos va a dar un resultado óptimo
+
+#### PREGUNTA 8
+
+Vamos a crear un modelo para realizar una clasificación binaria, donde le pasaremos como entrada las columnas: area, perimetro, compacto, longitud, coeficient.asimetria y longitud.ranura
+
+¿Qué tipo de algoritmo o modelo debería usar?
+
+**Respuesta**:
+
+¿Qué tipo de algoritmo o modelo debería usar?
+
+El modelo que debemos usar es regresión logistica binominaria ya que en lugar de realizar una predicción de un valor queremos hacer un clasificador
+
+```{r}
+# Datos de entrada
+df_seeds_clas_bin <- df_seeds[,c("area", "perimetro", "compacto", "longitud", "coeficient.asimetria", "longitud.ranura")]
+```
+
+#### PREGUNTA 9
+
+Crea un modelo que me permita clasificar si una semilla es de tipo Kama o no con las siguientes columnas: area, perimetro, compacto, longitud, coeficient.asimetria, longitud.ranura
+
+**Respuesta**:
+
+```{r}
+df_seeds$is_kama <- as.factor(df_seeds$is_kama)
+
+df_seeds$is_kama.n[df_seeds$is_kama==TRUE] <- 1
+df_seeds$is_kama.n[df_seeds$is_kama==FALSE] <- 0
+
+itrain <- sample(1:nrow(df_seeds),round(nrow(df_seeds)))
+itrain
+
+df_seeds_train <- df_seeds[itrain,]
+df_seeds_testing <- df_seeds[-itrain,]
+
+model <- glm(df_seeds_train, formula = is_kama ~ area + perimetro + compacto + longitud + coeficient.asimetria + longitud.ranura, family = 'binomial')
+
+summary(df_seeds_train)
+summary(df_seeds_train)
+```
+
+#### PREGUNTA 10
+
+Si usamos un umbral de 0 en la salida del modelo (lo que equivale a probabilidad de 0.5 cuando usamos el predict con type='response') ¿Cuales son los valores de precisión y exhausitividad?
+
+**Respuesta**.
+
+```{r}
+umbral <- 0.5
+pred_test <- predict(model, df_seeds_test, type="response")
+
+M <- table(real = df_seeds_test$is_kama, pred = pred_test > umbral )
+M
+paste("La precision es: ", round(M[2,2] / (M[1,2] + M[2,2]),2) )
+
+paste("La exhaustividad es:" , round(M[2,2] / (M[2,1] + M[2,2]),2) )
+```
+
+#### PREGUNTA 11
+
+¿Qué están haciendo las siguientes líneas?
+
+```{r}
+set.seed(123)
+cl<-df_seeds |> select(area,perimetro,compacto,longitud,anchura,coeficient.asimetria,longitud.ranura) |> kmeans(3)
+table(real=df_seeds$tipo,cluster=cl$cluster)
+```
+
+**Respuesta**:
+
+-   "set.seed(123)": Es la semilla de inicio semilla de inicio, para que los valores que se generen aleatoriamente no cambien
+
+-   "cl <- df_seeds |>  select(area,perimetro,compacto,longitud,anchura,coeficient.asimetria,longitud.ranura)":
+
+-   Se crea el dataframe con los datos de las columnas (area,perimetro,compacto,longitud,anchura,coeficient.asimetria,longitud.ranura)
+
+-   kmeans(3): Realiza clustering asignando 3 clusters donde:
+
+-   Se calculan las medias de cada columna con respecto a los trés cluster
+
+-   "table(real=df_seeds$tipo,cluster=cl$cluster)": Para ver cuantos elementos hay en cada grupo en este caso.
+
+-   "real=df_seeds$tipo": real tiene los tres tipos de semillas (Kama, Rosa, Canadian)
+
+-   "cluster=cl$cluster": crea el vector con 1, 2 o 3 aleatoriamente cuyo tamaño es la longitud de una columna del dataframe df_seeds
+
+-   "table(real, cluster)": cluster es la cantidad de (1, 2 y 3) que hay en cada semilla y que contiene cada cluster
+
+Dando como resultado la siguiente información:
+
+![](IMG/cluster.png)
